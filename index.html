@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dirk Bollen — Making complex, simple.</title>
+  <meta name="description" content="PhD psychologist turned service & business designer. Digital strategy, AI sense-making, service design and keynote speaking.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --yellow:  #FDC40D;
+    --cyan:    #45C4D9;
+    --purple:  #7460AB;
+    --pink:    #EE4280;
+    --ink:     #211B43;
+    --ink-alt: #2F2E41;
+    --gray-100: #E6E6E6;
+    --gray-500: #747070;
+    --bg-page:  #F6F4EF;
+    --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --font-body:    'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    --font-ui:      'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --nav-h: 68px;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-page);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.03em; line-height: 1; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  section { scroll-margin-top: var(--nav-h); }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px;
+    font-family: var(--font-ui); font-weight: 600; font-size: 15px;
+    letter-spacing: 0.02em; border-radius: 999px;
+    cursor: pointer; border: 0; text-decoration: none;
+    transition: transform 150ms var(--ease-out);
+    white-space: nowrap; line-height: 1;
+  }
+  .btn:hover  { transform: translateY(-1px); }
+  .btn:active { transform: none; opacity: 0.9; }
+  .btn-pink  { background: var(--pink);  color: #fff; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+
+  /* ── Layout wrap ── */
+  .wrap {
+    max-width: 1280px; margin: 0 auto; padding: 0 24px;
+  }
+  @media (min-width: 768px)  { .wrap { padding: 0 48px; } }
+  @media (min-width: 1280px) { .wrap { padding: 0 80px; } }
+
+  /* ── Nav ── */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    height: var(--nav-h);
+    background: rgba(246,244,239,0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 24px;
+    height: 100%; display: flex; align-items: center; justify-content: space-between;
+  }
+  @media (min-width: 768px)  { .nav-inner { padding: 0 48px; } }
+  @media (min-width: 1280px) { .nav-inner { padding: 0 80px; } }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-display); font-weight: 700; font-size: 17px;
+    letter-spacing: -0.01em; color: var(--ink);
+  }
+  .nav-brand img { width: 26px; height: auto; }
+
+  .nav-links {
+    display: none; list-style: none;
+    gap: 28px; font-family: var(--font-ui); font-weight: 500; font-size: 14px;
+  }
+  .nav-links a:hover { color: var(--pink); transition: color 150ms ease; }
+  @media (min-width: 768px) { .nav-links { display: flex; } }
+
+  .nav-cta { display: none; }
+  @media (min-width: 1024px) { .nav-cta { display: inline-flex; } }
+
+  .nav-mobile-cta { display: inline-flex; font-size: 14px; padding: 10px 18px; }
+  @media (min-width: 768px) { .nav-mobile-cta { display: none; } }
+
+  /* ── Hero ── */
+  #hero { padding: 72px 0 100px; }
+  @media (min-width: 1024px) { #hero { padding: 80px 0 140px; } }
+
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr; gap: 64px; align-items: start;
+  }
+  @media (min-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr 460px; gap: 80px; }
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-ui); font-weight: 700; font-size: 12px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink);
+    display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: ""; width: 32px; height: 2px; background: var(--pink); flex-shrink: 0;
+  }
+
+  #hero h1 {
+    font-size: clamp(64px, 10vw, 116px);
+    font-weight: 800; letter-spacing: -0.04em; line-height: 0.96; margin-bottom: 32px;
+  }
+  #hero h1 em { font-style: italic; font-weight: 500; color: var(--purple); }
+
+  .hero-sub {
+    font-size: clamp(17px, 1.8vw, 20px); line-height: 1.65;
+    color: var(--ink-alt); max-width: 52ch; margin-bottom: 36px;
+  }
+
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 52px; }
+
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 32px; font-family: var(--font-ui); }
+  .hero-meta .k {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gray-500); margin-bottom: 4px;
+  }
+  .hero-meta .v { font-size: 15px; font-weight: 500; }
+
+  /* Portrait */
+  .portrait-wrap {
+    position: relative; padding: 28px 28px 0 0;
+  }
+  @media (max-width: 1023px) { .portrait-wrap { max-width: 400px; } }
+
+  .portrait-inner { position: relative; aspect-ratio: 4 / 5; }
+
+  .portrait-img {
+    position: absolute; inset: 0; border-radius: 4px;
+    background-image: url('project/website/assets/dirk-stage.jpg');
+    background-size: cover; background-position: 52% 40%;
+  }
+  .portrait-tag {
+    position: absolute; left: -18px; bottom: 36px;
+    background: var(--ink); color: #fff;
+    font-family: var(--font-ui); font-weight: 600; font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 14px;
+    white-space: nowrap;
+  }
+  .portrait-ring {
+    position: absolute; right: -28px; top: -28px;
+    width: 110px; height: 110px;
+    border: 2px solid var(--ink); border-radius: 50%; pointer-events: none;
+  }
+  .portrait-dot {
+    position: absolute; right: -13px; top: -13px;
+    width: 18px; height: 18px;
+    background: var(--pink); border-radius: 50%; pointer-events: none;
+  }
+
+  /* ── Ticker ── */
+  .ticker {
+    background: var(--ink); color: #fff;
+    padding: 18px 0; overflow: hidden; white-space: nowrap; user-select: none;
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(16px, 2vw, 22px); letter-spacing: -0.01em;
+  }
+  .ticker-track {
+    display: inline-flex;
+    animation: ticker 30s linear infinite;
+  }
+  .ticker-track span { padding: 0 28px; flex-shrink: 0; }
+  .ticker-dot { color: var(--pink); }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+
+  /* ── About ── */
+  #about { padding: 100px 0; }
+  @media (min-width: 1024px) { #about { padding: 140px 0; } }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr; gap: 48px;
+  }
+  @media (min-width: 900px) {
+    .about-grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  }
+
+  .section-label {
+    font-family: var(--font-ui); font-weight: 700; font-size: 12px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--pink); margin-bottom: 16px;
+  }
+
+  #about h2 {
+    font-size: clamp(40px, 5vw, 60px); font-weight: 800; line-height: 1.02;
+  }
+
+  .about-body p {
+    font-size: clamp(16px, 1.5vw, 18px); line-height: 1.75;
+    color: var(--ink-alt); max-width: 55ch;
+  }
+  .about-body p + p { margin-top: 18px; }
+  .about-sig {
+    margin-top: 28px;
+    font-family: var(--font-display); font-style: italic; font-weight: 500;
+    font-size: clamp(17px, 1.8vw, 21px); color: var(--purple);
+    line-height: 1.4; max-width: 44ch;
+  }
+
+  /* ── Services ── */
+  #services { background: #fff; padding: 100px 0; }
+  @media (min-width: 1024px) { #services { padding: 140px 0; } }
+
+  .services-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    flex-wrap: wrap; gap: 24px; margin-bottom: 56px;
+  }
+  #services h2 { font-size: clamp(40px, 5vw, 60px); font-weight: 800; }
+  .services-note {
+    font-family: var(--font-ui); font-size: 14px; color: var(--gray-500);
+    max-width: 300px; line-height: 1.65;
+  }
+  @media (min-width: 1024px) { .services-note { text-align: right; } }
+
+  .svc-grid { display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 640px)  { .svc-grid { grid-template-columns: repeat(2, 1fr); column-gap: 48px; } }
+  @media (min-width: 1024px) { .svc-grid { grid-template-columns: repeat(3, 1fr); column-gap: 56px; } }
+
+  .svc-item { padding: 28px 0 32px; border-top: 2px solid var(--ink); }
+  .svc-num {
+    font-family: var(--font-ui); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gray-500); margin-bottom: 12px;
+  }
+  .svc-item h3 {
+    font-size: clamp(19px, 1.8vw, 23px); font-weight: 700;
+    letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 10px;
+  }
+  .svc-item p { font-size: 15px; line-height: 1.65; color: var(--gray-500); max-width: 36ch; }
+  .svc-bar { width: 28px; height: 4px; background: var(--pink); margin-top: 18px; border-radius: 2px; }
+  .svc-item:nth-child(2) .svc-bar { background: var(--cyan); }
+  .svc-item:nth-child(3) .svc-bar { background: var(--yellow); }
+  .svc-item:nth-child(4) .svc-bar { background: var(--purple); }
+  .svc-item:nth-child(5) .svc-bar { background: var(--pink); }
+  .svc-item:nth-child(6) .svc-bar { background: var(--cyan); }
+
+  /* ── Speaking ── */
+  #speaking { padding: 100px 0; }
+  @media (min-width: 1024px) { #speaking { padding: 140px 0; } }
+
+  .speaking-grid {
+    display: grid; grid-template-columns: 1fr; gap: 48px;
+  }
+  @media (min-width: 1024px) {
+    .speaking-grid { grid-template-columns: 400px 1fr; gap: 80px; align-items: start; }
+  }
+
+  #speaking h2 {
+    font-size: clamp(40px, 5vw, 60px); font-weight: 800; line-height: 1; margin-top: 14px;
+  }
+  .speaking-lead {
+    font-size: clamp(15px, 1.5vw, 17px); line-height: 1.75;
+    color: var(--ink-alt); margin-top: 20px; max-width: 42ch;
+  }
+  .speaking-cta { margin-top: 24px; display: inline-flex; }
+
+  .talks { border-bottom: 1.5px solid var(--ink); }
+  .talk {
+    display: grid; grid-template-columns: 56px 1fr auto;
+    gap: 20px; padding: 22px 0;
+    border-top: 1.5px solid var(--ink); align-items: center;
+  }
+  @media (min-width: 640px) { .talk { grid-template-columns: 80px 1fr auto; gap: 28px; } }
+
+  .talk-year {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(18px, 2vw, 22px); line-height: 1;
+  }
+  .talk-title {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(16px, 1.8vw, 20px); letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .talk-venue {
+    font-family: var(--font-ui); font-size: 13px;
+    color: var(--gray-500); margin-top: 4px;
+  }
+  .talk-arrow {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border: 1.5px solid var(--ink); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+    transition: background 150ms ease, color 150ms ease;
+  }
+  .talk:hover .talk-arrow { background: var(--ink); color: #fff; }
+
+  /* ── Contact ── */
+  #contact { background: var(--ink); color: #fff; padding: 100px 0; }
+  @media (min-width: 1024px) { #contact { padding: 140px 0; } }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr; gap: 60px;
+  }
+  @media (min-width: 1024px) {
+    .contact-grid { grid-template-columns: 1fr 520px; gap: 100px; }
+  }
+
+  .contact-label {
+    font-family: var(--font-ui); font-weight: 700; font-size: 12px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 18px;
+  }
+  #contact h2 {
+    font-size: clamp(48px, 7vw, 80px); font-weight: 800; line-height: 0.98; color: #fff;
+  }
+  #contact h2 em { font-style: italic; font-weight: 500; color: var(--cyan); }
+
+  .contact-info { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
+  .contact-info .row { font-family: var(--font-ui); font-size: 15px; }
+  .contact-info .row small {
+    display: block; color: rgba(255,255,255,0.5);
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 4px;
+  }
+
+  /* Form */
+  .form-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 540px) {
+    .form-grid { grid-template-columns: 1fr 1fr; }
+    .form-grid .f-full { grid-column: 1 / 3; }
+  }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-family: var(--font-ui); font-weight: 600; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+  }
+  .field input, .field textarea {
+    font-family: var(--font-body); font-size: 15px; padding: 12px 14px;
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.15);
+    color: #fff; border-radius: 8px; outline: none; width: 100%;
+    transition: border-color 150ms ease;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .field input:focus, .field textarea:focus { border-color: var(--cyan); }
+  .field textarea { min-height: 120px; resize: vertical; }
+
+  .form-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px; margin-top: 10px;
+  }
+  .form-note {
+    font-family: var(--font-ui); font-size: 12px; color: rgba(255,255,255,0.4); margin: 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--ink); padding: 28px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-family: var(--font-ui); font-size: 13px; color: rgba(255,255,255,0.4);
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">
+        <img src="project/website/assets/logo-color.png" alt="Dirk Bollen">
+        Dirk Bollen
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">What I do</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-ghost nav-cta">Start a project →</a>
+      <a href="#contact" class="btn btn-pink nav-mobile-cta">Contact</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-eyebrow">Human · AI · Strategy</div>
+            <h1>Making<br>complex,<br><em>simple.</em></h1>
+            <p class="hero-sub">PhD psychologist turned service &amp; business designer. I help leaders translate emerging technology — especially AI — into products and experiences people actually understand.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-pink" href="#contact">Get in touch →</a>
+              <a class="btn btn-ghost" href="#services">See what I do</a>
+            </div>
+            <div class="hero-meta">
+              <div><div class="k">Based in</div><div class="v">Maasmechelen, BE</div></div>
+              <div><div class="k">Available</div><div class="v">Q2 2026 · select briefs</div></div>
+              <div><div class="k">Speaks</div><div class="v">EN · NL · FR</div></div>
+            </div>
+          </div>
+          <div class="portrait-wrap">
+            <div class="portrait-inner">
+              <div class="portrait-img" role="img" aria-label="Dirk Bollen presenting on stage"></div>
+              <div class="portrait-ring" aria-hidden="true"></div>
+              <div class="portrait-dot" aria-hidden="true"></div>
+              <div class="portrait-tag">PhD · HCI · since 2009</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Service design</span><span class="ticker-dot">●</span>
+        <span>AI strategy</span><span class="ticker-dot">●</span>
+        <span>Customer journeys</span><span class="ticker-dot">●</span>
+        <span>Keynote speaking</span><span class="ticker-dot">●</span>
+        <span>Workshops</span><span class="ticker-dot">●</span>
+        <span>Behavioural research</span><span class="ticker-dot">●</span>
+        <span>Product discovery</span><span class="ticker-dot">●</span>
+        <!-- duplicate for seamless loop -->
+        <span>Service design</span><span class="ticker-dot">●</span>
+        <span>AI strategy</span><span class="ticker-dot">●</span>
+        <span>Customer journeys</span><span class="ticker-dot">●</span>
+        <span>Keynote speaking</span><span class="ticker-dot">●</span>
+        <span>Workshops</span><span class="ticker-dot">●</span>
+        <span>Behavioural research</span><span class="ticker-dot">●</span>
+        <span>Product discovery</span><span class="ticker-dot">●</span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <div class="about-grid">
+          <div>
+            <div class="section-label">About</div>
+            <h2>Psychology<br>meets tomorrow's<br>technology.</h2>
+          </div>
+          <div class="about-body">
+            <p>I'm a psychologist with a doctorate in Human–Computer Interaction. For fifteen years I've been sitting at the seam between how people think and how technology thinks back.</p>
+            <p>Right now AI is rewriting that seam faster than most organisations can follow. I help leaders, teams and product people make sense of what's shifting — and turn it into strategy, services and experiences worth shipping.</p>
+            <p class="about-sig">"Let's find out together how the next wave is changing your business."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="wrap">
+        <div class="services-head">
+          <h2>What I do.</h2>
+          <p class="services-note">Six ways I show up on a project — pick one, mix several, or start with a conversation and we'll figure it out.</p>
+        </div>
+        <div class="svc-grid">
+          <div class="svc-item">
+            <div class="svc-num">01</div>
+            <h3>Strategy &amp; positioning</h3>
+            <p>Turning fuzzy opportunities into a concrete digital strategy that the whole team can act on.</p>
+            <div class="svc-bar"></div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">02</div>
+            <h3>Service design</h3>
+            <p>Mapping mental models, stakeholder flows and end-to-end customer journeys so nothing hides between departments.</p>
+            <div class="svc-bar"></div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">03</div>
+            <h3>Research &amp; discovery</h3>
+            <p>Applying rigorous behavioural science to uncover what customers actually do — not what they say they do.</p>
+            <div class="svc-bar"></div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">04</div>
+            <h3>AI sense-making</h3>
+            <p>Separating signal from hype, translating foundation models into product moves your team can ship next quarter.</p>
+            <div class="svc-bar"></div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">05</div>
+            <h3>Prototyping &amp; validation</h3>
+            <p>Interfaces and interaction mocks you can put in front of real users before committing engineering effort.</p>
+            <div class="svc-bar"></div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">06</div>
+            <h3>Speaking &amp; workshops</h3>
+            <p>Energising keynotes and hands-on sessions that leave rooms aligned, curious and ready to act.</p>
+            <div class="svc-bar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPEAKING -->
+    <section id="speaking">
+      <div class="wrap">
+        <div class="speaking-grid">
+          <div>
+            <div class="section-label">Speaking</div>
+            <h2>On stage,<br>and off-script.</h2>
+            <p class="speaking-lead">Energising talks on AI, human behaviour and the near-future of work. Keynotes, fireside chats, closed-door leadership sessions.</p>
+            <a class="btn btn-ghost speaking-cta" href="#contact">Book a talk →</a>
+          </div>
+          <div>
+            <div class="talks">
+              <div class="talk">
+                <div class="talk-year">'25</div>
+                <div>
+                  <div class="talk-title">The quiet revolution in how we think</div>
+                  <div class="talk-venue">Tech Summit · Brussels</div>
+                </div>
+                <div class="talk-arrow" aria-hidden="true">↗</div>
+              </div>
+              <div class="talk">
+                <div class="talk-year">'25</div>
+                <div>
+                  <div class="talk-title">Designing for minds that aren't ours</div>
+                  <div class="talk-venue">UX Antwerp Meetup</div>
+                </div>
+                <div class="talk-arrow" aria-hidden="true">↗</div>
+              </div>
+              <div class="talk">
+                <div class="talk-year">'24</div>
+                <div>
+                  <div class="talk-title">Shift Happens — AI &amp; Human Behaviour</div>
+                  <div class="talk-venue">KBC Corporate Keynote</div>
+                </div>
+                <div class="talk-arrow" aria-hidden="true">↗</div>
+              </div>
+              <div class="talk">
+                <div class="talk-year">'24</div>
+                <div>
+                  <div class="talk-title">What makes us still useful?</div>
+                  <div class="talk-venue">Design Leadership Forum · Ghent</div>
+                </div>
+                <div class="talk-arrow" aria-hidden="true">↗</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div>
+            <div class="contact-label">Contact</div>
+            <h2>Let's make<br>something that <em>matters.</em></h2>
+            <div class="contact-info">
+              <div class="row"><small>Email</small>contact@dirkbollen.be</div>
+              <div class="row"><small>Availability</small>Taking new briefs from Q2 2026</div>
+              <div class="row"><small>Elsewhere</small>LinkedIn · Bluesky · Medium</div>
+            </div>
+          </div>
+          <form onsubmit="return sendMail(event)">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required placeholder="Your name">
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required placeholder="you@example.com">
+              </div>
+              <div class="field f-full">
+                <label for="org">Organisation</label>
+                <input id="org" name="org" type="text" placeholder="Company or organisation">
+              </div>
+              <div class="field f-full">
+                <label for="msg">What are you working on?</label>
+                <textarea id="msg" name="msg" required placeholder="Tell me about your project..."></textarea>
+              </div>
+            </div>
+            <div class="form-footer">
+              <p class="form-note">Opens your mail app with the message pre-filled.</p>
+              <button class="btn btn-pink" type="submit">Send message →</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span>© 2026 Dirk Bollen · PhD Psychology, HCI</span>
+        <span>Made in Belgium</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function sendMail(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const org  = document.getElementById('org').value;
+      const msg  = document.getElementById('msg').value;
+      const body = `From: ${name} <${email}>\nOrganisation: ${org}\n\n${msg}`;
+      window.location.href = `mailto:contact@dirkbollen.be?subject=${encodeURIComponent('Project enquiry from ' + name)}&body=${encodeURIComponent(body)}`;
+      return false;
+    }
+  </script>
+
+</body>
+</html>
