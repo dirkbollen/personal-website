@@ -369,6 +369,29 @@
     font-family: var(--font-ui); font-size: 12px; color: rgba(255,255,255,0.4); margin: 0;
   }
 
+  .form-success {
+    display: none; text-align: center; padding: 40px 24px;
+    font-family: var(--font-ui);
+  }
+  .form-success .success-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--cyan); color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin: 0 auto 20px;
+  }
+  .form-success h3 {
+    font-family: var(--font-display); font-size: 22px; font-weight: 700;
+    color: #fff; margin-bottom: 8px;
+  }
+  .form-success p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+  .form-error-msg {
+    display: none; font-family: var(--font-ui); font-size: 13px;
+    color: #ff8fa3; margin-top: 4px;
+  }
+
+  .btn[disabled] { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+
   /* ── Footer ── */
   footer {
     background: var(--ink); padding: 28px 0;
@@ -582,7 +605,10 @@
               <div class="row"><small>Elsewhere</small>LinkedIn · Bluesky · Medium</div>
             </div>
           </div>
-          <form onsubmit="return sendMail(event)">
+          <form id="contact-form" novalidate>
+            <!-- Honeypot: bots fill this, humans don't -->
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
             <div class="form-grid">
               <div class="field">
                 <label for="name">Name</label>
@@ -602,10 +628,17 @@
               </div>
             </div>
             <div class="form-footer">
-              <p class="form-note">Opens your mail app with the message pre-filled.</p>
-              <button class="btn btn-pink" type="submit">Send message →</button>
+              <p class="form-note" id="form-note">Your message is sent directly — no email app needed.</p>
+              <button class="btn btn-pink" type="submit" id="submit-btn">Send message →</button>
             </div>
+            <p class="form-error-msg" id="form-error">Something went wrong. Please try again or email contact@dirkbollen.be directly.</p>
           </form>
+
+          <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <div class="success-icon" aria-hidden="true">✓</div>
+            <h3>Message sent!</h3>
+            <p>Thanks for reaching out. I'll get back to you within a couple of business days.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -622,16 +655,54 @@
   </footer>
 
   <script>
-    function sendMail(e) {
+    // ── Contact form ──────────────────────────────────────────────────────────
+    // Replace YOUR_FORM_ID below with the ID from your Formspree dashboard
+    // (sign up free at https://formspree.io → New Form → copy the 8-char ID).
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mlgaqyqp';
+
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
       e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const org  = document.getElementById('org').value;
-      const msg  = document.getElementById('msg').value;
-      const body = `From: ${name} <${email}>\nOrganisation: ${org}\n\n${msg}`;
-      window.location.href = `mailto:contact@dirkbollen.be?subject=${encodeURIComponent('Project enquiry from ' + name)}&body=${encodeURIComponent(body)}`;
-      return false;
-    }
+
+      const form      = e.target;
+      const btn       = document.getElementById('submit-btn');
+      const errorEl   = document.getElementById('form-error');
+      const successEl = document.getElementById('form-success');
+
+      // Honeypot check — bail silently if a bot filled the hidden field
+      if (form._honey.value) return;
+
+      // Basic client-side validation
+      const name  = form.name.value.trim();
+      const email = form.email.value.trim();
+      const msg   = form.msg.value.trim();
+      if (!name || !email || !msg) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      errorEl.style.display = 'none';
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+
+        if (res.ok) {
+          form.style.display = 'none';
+          successEl.style.display = 'block';
+        } else {
+          const data = await res.json().catch(() => ({}));
+          console.error('Formspree error:', res.status, data);
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        console.error('Submit failed:', err);
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Send message →';
+      }
+    });
   </script>
 
 </body>
