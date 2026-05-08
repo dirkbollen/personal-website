@@ -96,9 +96,6 @@
   .nav-links a:hover { color: var(--pink); transition: color 150ms ease; }
   @media (min-width: 768px) { .nav-links { display: flex; } }
 
-  .nav-cta { display: none; }
-  @media (min-width: 1024px) { .nav-cta { display: inline-flex; } }
-
   .nav-mobile-cta { display: inline-flex; font-size: 14px; padding: 10px 18px; }
   @media (min-width: 768px) { .nav-mobile-cta { display: none; } }
 
@@ -280,35 +277,33 @@
     font-size: clamp(15px, 1.5vw, 17px); line-height: 1.75;
     color: var(--ink-alt); margin-top: 20px; max-width: 42ch;
   }
-  .speaking-cta { margin-top: 24px; display: inline-flex; }
+  .speaking-cta { margin-top: 32px; display: inline-flex; }
 
-  .talks { border-bottom: 1.5px solid var(--ink); }
-  .talk {
-    display: grid; grid-template-columns: 56px 1fr auto;
-    gap: 20px; padding: 22px 0;
-    border-top: 1.5px solid var(--ink); align-items: center;
+  .event-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 56px 180px 56px 180px 56px;
+    gap: 14px;
   }
-  @media (min-width: 640px) { .talk { grid-template-columns: 80px 1fr auto; gap: 28px; } }
 
-  .talk-year {
-    font-family: var(--font-display); font-weight: 700;
-    font-size: clamp(18px, 2vw, 22px); line-height: 1;
+  .event-gallery-cell {
+    position: relative; overflow: hidden;
+    border: 2px solid var(--ink); border-radius: 10px;
+    opacity: 0; filter: blur(10px); transform: translateY(12px);
+    transition: opacity 500ms var(--ease-out), filter 500ms var(--ease-out), transform 500ms var(--ease-out);
   }
-  .talk-title {
-    font-family: var(--font-display); font-weight: 600;
-    font-size: clamp(16px, 1.8vw, 20px); letter-spacing: -0.01em; line-height: 1.2;
+  .event-gallery-cell.in-view { opacity: 1; filter: blur(0px); transform: translateY(0); }
+
+  .event-gallery-cell:nth-child(1) { grid-column: 2; grid-row: 1 / 3; transition-delay: 0.2s; }
+  .event-gallery-cell:nth-child(2) { grid-column: 1; grid-row: 2 / 4; transition-delay: 0.4s; }
+  .event-gallery-cell:nth-child(3) { grid-column: 1; grid-row: 4 / 6; transition-delay: 0.6s; }
+  .event-gallery-cell:nth-child(4) { grid-column: 2; grid-row: 3 / 5; transition-delay: 0.8s; }
+
+  .event-gallery-cell img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 400ms var(--ease-out);
   }
-  .talk-venue {
-    font-family: var(--font-ui); font-size: 13px;
-    color: var(--gray-500); margin-top: 4px;
-  }
-  .talk-arrow {
-    width: 40px; height: 40px; flex-shrink: 0;
-    border: 1.5px solid var(--ink); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-size: 16px;
-    transition: background 150ms ease, color 150ms ease;
-  }
-  .talk:hover .talk-arrow { background: var(--ink); color: #fff; }
+  .event-gallery-cell:hover img { transform: scale(1.04); }
 
   /* ── Contact ── */
   #contact { background: var(--ink); color: #fff; padding: 100px 0; }
@@ -318,7 +313,7 @@
     display: grid; grid-template-columns: 1fr; gap: 60px;
   }
   @media (min-width: 1024px) {
-    .contact-grid { grid-template-columns: 1fr 520px; gap: 100px; }
+    .contact-grid { grid-template-columns: 1fr 520px; gap: 80px; align-items: start; }
   }
 
   .contact-label {
@@ -330,14 +325,6 @@
     font-size: clamp(48px, 7vw, 80px); font-weight: 800; line-height: 0.98; color: #fff;
   }
   #contact h2 em { font-style: italic; font-weight: 500; color: var(--cyan); }
-
-  .contact-info { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
-  .contact-info .row { font-family: var(--font-ui); font-size: 15px; }
-  .contact-info .row small {
-    display: block; color: rgba(255,255,255,0.5);
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    font-weight: 700; margin-bottom: 4px;
-  }
 
   /* Form */
   .form-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
@@ -363,7 +350,7 @@
 
   .form-footer {
     display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 16px; margin-top: 10px;
+    flex-wrap: wrap; gap: 16px; margin-top: 24px;
   }
   .form-note {
     font-family: var(--font-ui); font-size: 12px; color: rgba(255,255,255,0.4); margin: 0;
@@ -419,8 +406,7 @@
         <li><a href="#speaking">Speaking</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="#contact" class="btn btn-ghost nav-cta">Start a project →</a>
-      <a href="#contact" class="btn btn-pink nav-mobile-cta">Contact</a>
+<a href="#contact" class="btn btn-pink nav-mobile-cta">Contact</a>
     </div>
   </header>
 
@@ -432,16 +418,16 @@
         <div class="hero-grid">
           <div>
             <div class="hero-eyebrow">Human · AI · Strategy</div>
-            <h1>Making<br>complex,<br><em>simple.</em></h1>
-            <p class="hero-sub">PhD psychologist turned service &amp; business designer. I help leaders translate emerging technology — especially AI — into products and experiences people actually understand.</p>
+            <h1>Complex,<br><em>made simple.</em></h1>
+            <p class="hero-sub">PhD psychologist turned into business &amp; service designer. I help clients translate emerging technology into products and experiences their customers actually want to use.</p>
             <div class="hero-ctas">
               <a class="btn btn-pink" href="#contact">Get in touch →</a>
               <a class="btn btn-ghost" href="#services">See what I do</a>
             </div>
             <div class="hero-meta">
               <div><div class="k">Based in</div><div class="v">Maasmechelen, BE</div></div>
-              <div><div class="k">Available</div><div class="v">Q2 2026 · select briefs</div></div>
-              <div><div class="k">Speaks</div><div class="v">EN · NL · FR</div></div>
+              <div><div class="k">Currently working at</div><div class="v">Proximus</div></div>
+              <div><div class="k">Speaks</div><div class="v">EN · NL</div></div>
             </div>
           </div>
           <div class="portrait-wrap">
@@ -449,7 +435,7 @@
               <div class="portrait-img" role="img" aria-label="Dirk Bollen presenting on stage"></div>
               <div class="portrait-ring" aria-hidden="true"></div>
               <div class="portrait-dot" aria-hidden="true"></div>
-              <div class="portrait-tag">PhD · HCI · since 2009</div>
+              <div class="portrait-tag">PhD · HCI · since 2015</div>
             </div>
           </div>
         </div>
@@ -486,8 +472,9 @@
             <h2>Psychology<br>meets tomorrow's<br>technology.</h2>
           </div>
           <div class="about-body">
-            <p>I'm a psychologist with a doctorate in Human–Computer Interaction. For fifteen years I've been sitting at the seam between how people think and how technology thinks back.</p>
-            <p>Right now AI is rewriting that seam faster than most organisations can follow. I help leaders, teams and product people make sense of what's shifting — and turn it into strategy, services and experiences worth shipping.</p>
+            <p><b>I'm a psychologist with a PhD in Human-Computer Interaction.</b></p>
+            <p>For twenty years I've worked where people and technology meet, and right now AI is rewriting that relationship faster than most organisations can follow.</p>
+            <p>I help leaders and product teams figure out what's actually changing, and turn it into work that ships.</p>
             <p class="about-sig">"Let's find out together how the next wave is changing your business."</p>
           </div>
         </div>
@@ -517,13 +504,13 @@
           <div class="svc-item">
             <div class="svc-num">03</div>
             <h3>Research &amp; discovery</h3>
-            <p>Applying rigorous behavioural science to uncover what customers actually do — not what they say they do.</p>
+            <p>Applying behavioural science to uncover what customers actually do — not what they say they do.</p>
             <div class="svc-bar"></div>
           </div>
           <div class="svc-item">
             <div class="svc-num">04</div>
             <h3>AI sense-making</h3>
-            <p>Separating signal from hype, translating foundation models into product moves your team can ship next quarter.</p>
+            <p>Separating signal from hype, translating foundation models into product moves your team can ship.</p>
             <div class="svc-bar"></div>
           </div>
           <div class="svc-item">
@@ -553,38 +540,18 @@
             <a class="btn btn-ghost speaking-cta" href="#contact">Book a talk →</a>
           </div>
           <div>
-            <div class="talks">
-              <div class="talk">
-                <div class="talk-year">'25</div>
-                <div>
-                  <div class="talk-title">The quiet revolution in how we think</div>
-                  <div class="talk-venue">Tech Summit · Brussels</div>
-                </div>
-                <div class="talk-arrow" aria-hidden="true">↗</div>
+            <div class="event-gallery" id="event-gallery">
+              <div class="event-gallery-cell">
+                <img src="project/website/assets/events/ITP Events - Shift AI - Zaventem - 20032019 - 018.jpg" alt="Shift AI event, Zaventem 2019">
               </div>
-              <div class="talk">
-                <div class="talk-year">'25</div>
-                <div>
-                  <div class="talk-title">Designing for minds that aren't ours</div>
-                  <div class="talk-venue">UX Antwerp Meetup</div>
-                </div>
-                <div class="talk-arrow" aria-hidden="true">↗</div>
+              <div class="event-gallery-cell">
+                <img src="project/website/assets/events/ITP Events - Shift AI - Zaventem - 20032019 - 029.jpg" alt="Shift AI event, Zaventem 2019">
               </div>
-              <div class="talk">
-                <div class="talk-year">'24</div>
-                <div>
-                  <div class="talk-title">Shift Happens — AI &amp; Human Behaviour</div>
-                  <div class="talk-venue">KBC Corporate Keynote</div>
-                </div>
-                <div class="talk-arrow" aria-hidden="true">↗</div>
+              <div class="event-gallery-cell">
+                <img src="project/website/assets/events/PXS1.JPG" alt="Proximus event">
               </div>
-              <div class="talk">
-                <div class="talk-year">'24</div>
-                <div>
-                  <div class="talk-title">What makes us still useful?</div>
-                  <div class="talk-venue">Design Leadership Forum · Ghent</div>
-                </div>
-                <div class="talk-arrow" aria-hidden="true">↗</div>
+              <div class="event-gallery-cell">
+                <img src="project/website/assets/events/antwerpen.jpg" alt="Talk in Antwerp">
               </div>
             </div>
           </div>
@@ -599,11 +566,6 @@
           <div>
             <div class="contact-label">Contact</div>
             <h2>Let's make<br>something that <em>matters.</em></h2>
-            <div class="contact-info">
-              <div class="row"><small>Email</small>contact@dirkbollen.be</div>
-              <div class="row"><small>Availability</small>Taking new briefs from Q2 2026</div>
-              <div class="row"><small>Elsewhere</small>LinkedIn · Bluesky · Medium</div>
-            </div>
           </div>
           <form id="contact-form" novalidate>
             <!-- Honeypot: bots fill this, humans don't -->
@@ -655,6 +617,20 @@
   </footer>
 
   <script>
+    // ── Speaking gallery ─────────────────────────────────────────────────────
+    const galleryObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          galleryObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.event-gallery-cell').forEach(cell => {
+      galleryObserver.observe(cell);
+    });
+
     // ── Contact form ──────────────────────────────────────────────────────────
     // Replace YOUR_FORM_ID below with the ID from your Formspree dashboard
     // (sign up free at https://formspree.io → New Form → copy the 8-char ID).

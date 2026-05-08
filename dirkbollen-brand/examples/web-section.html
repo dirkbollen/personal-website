@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dirk Bollen — web section template</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { margin: 0; }
+  .container { max-width: var(--content-w); margin: 0 auto; padding: 0 var(--s-7); }
+
+  /* Hero */
+  .hero { padding: var(--s-10) 0; }
+  .hero .eyebrow { margin-bottom: var(--s-4); }
+  .hero h1 {
+    font-size: 84px; font-weight: 800;
+    line-height: var(--lh-tight); letter-spacing: var(--tr-tight);
+    color: var(--db-ink); max-width: 14ch;
+    margin: 0 0 var(--s-5) 0;
+  }
+  .hero p.lead {
+    color: var(--db-gray-500); max-width: 60ch;
+    margin: 0 0 var(--s-7) 0;
+  }
+
+  /* Services grid */
+  .services { padding: var(--s-9) 0; border-top: var(--bw-hair) solid var(--db-gray-100); }
+  .services h2 {
+    font-size: var(--t-h2); font-weight: 700;
+    margin-bottom: var(--s-7);
+  }
+  .services .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-7);
+  }
+  .svc { display: flex; flex-direction: column; gap: var(--s-3); }
+  .svc .dot { width: 14px; height: 14px; border-radius: var(--r-full); }
+  .svc h3 { font-size: 22px; font-weight: 700; margin: 0; }
+  .svc p { font-size: 15px; color: var(--db-gray-500); max-width: 38ch; }
+
+  /* Footer */
+  footer {
+    background: var(--db-ink); color: var(--db-white);
+    padding: var(--s-8) 0; margin-top: var(--s-10);
+  }
+  footer .row { display: flex; justify-content: space-between; align-items: center; }
+  footer .wordmark {
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 28px; letter-spacing: var(--tr-tight);
+    color: var(--db-white);
+  }
+  footer .contact { font-family: var(--font-ui); font-size: 15px; color: rgba(255,255,255,0.65); }
+  footer .contact a { color: var(--db-cyan); }
+  footer .contact a:hover { border-bottom-color: var(--db-cyan); }
+
+  @media (max-width: 900px) {
+    .services .grid { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+  <section class="hero container">
+    <p class="eyebrow">Strategy · Design · AI</p>
+    <h1>Making complex<br>simple.</h1>
+    <p class="lead">I help my clients go the distance from a high-level strategic insight to a feasible roadmap. Digital strategy, service design, product management.</p>
+    <a href="#" class="btn btn-primary">Let's talk →</a>
+  </section>
+
+  <section class="services container">
+    <h2>How I can help you</h2>
+    <div class="grid">
+      <div class="svc">
+        <div class="dot" style="background: var(--db-cyan)"></div>
+        <h3>Digital strategy</h3>
+        <p>Roadmaps grounded in evidence. From insight to execution.</p>
+      </div>
+      <div class="svc">
+        <div class="dot" style="background: var(--db-purple)"></div>
+        <h3>Service design</h3>
+        <p>Customer journeys, blueprints, frontstage and backstage logic.</p>
+      </div>
+      <div class="svc">
+        <div class="dot" style="background: var(--db-pink)"></div>
+        <h3>Product management</h3>
+        <p>Vision, scope, sequencing. Shipping the right thing.</p>
+      </div>
+      <div class="svc">
+        <div class="dot" style="background: var(--db-yellow)"></div>
+        <h3>User research</h3>
+        <p>Mixed methods, fast cycles, decisions you can defend.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container row">
+      <div class="wordmark">Dirk Bollen</div>
+      <div class="contact">hi@dirkbollen.be · <a href="#">linkedin</a></div>
+    </div>
+  </footer>
+</body>
+</html>

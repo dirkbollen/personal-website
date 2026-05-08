@@ -1,0 +1,14 @@
+<!--
+  Dirk Bollen wordmark.
+  Renders the brand name in Montserrat 800. The stack falls back to system
+  geometric sans serifs when Montserrat is unavailable. Use currentColor so
+  the wordmark inherits any parent text colour (default is #211B43 ink).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="80" viewBox="0 0 320 80" fill="none">
+  <text x="0" y="58"
+        font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="800"
+        font-size="56"
+        letter-spacing="-1.5"
+        fill="currentColor">Dirk Bollen</text>
+</svg>

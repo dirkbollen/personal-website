@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dirk Bollen — slide template</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #f0eee9; overflow: hidden; }
+  .slide {
+    width: 1920px; height: 1080px; background: var(--db-white);
+    position: relative; color: var(--db-ink);
+    font-family: var(--font-body);
+    transform-origin: top left;
+  }
+  .eyebrow {
+    position: absolute; left: 120px; top: 140px;
+    font-family: var(--font-ui);
+    font-size: 22px; font-weight: 700;
+    letter-spacing: var(--tr-caps); text-transform: uppercase;
+    color: var(--db-pink); margin: 0;
+  }
+  h1.title {
+    position: absolute; left: 120px; top: 320px;
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 160px;
+    line-height: var(--lh-tight); letter-spacing: -0.03em;
+    color: var(--db-ink); margin: 0; max-width: 1500px;
+  }
+  .by {
+    position: absolute; left: 120px; bottom: 120px;
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 28px;
+    color: var(--db-ink);
+  }
+  .by small {
+    display: block;
+    font-family: var(--font-ui);
+    font-weight: 500; font-size: 18px;
+    color: var(--db-gray-500); margin-top: 6px;
+  }
+  .mark { position: absolute; right: 120px; top: 120px; width: 80px; }
+  .mark img { width: 100%; height: auto; display: block; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="eyebrow">Human · AI · Strategy</div>
+    <h1 class="title">Making complex<br>simple.</h1>
+    <div class="by">
+      Dirk Bollen
+      <small>Digital strategist · Service designer</small>
+    </div>
+    <div class="mark"><img src="../assets/logo-icon-color.png" alt="Dirk Bollen"></div>
+  </div>
+  <script>
+    function fit() {
+      const s = document.querySelector('.slide');
+      const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+      s.style.transform = `scale(${k})`;
+      document.body.style.width = (1920 * k) + 'px';
+      document.body.style.height = (1080 * k) + 'px';
+    }
+    addEventListener('resize', fit); fit();
+  </script>
+</body>
+</html>
