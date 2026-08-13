@@ -1,0 +1,36 @@
+/* Shared website styles for Dirk's personal site
+   Used by both directions. */
+:root { --content-w: 1200px; }
+
+/* Reset within artboards */
+.db-site, .db-site * { box-sizing: border-box; }
+.db-site { font-family: var(--font-body); color: var(--db-ink); line-height: 1.55; }
+.db-site h1, .db-site h2, .db-site h3 { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
+.db-site p { margin: 0 0 1em 0; max-width: 62ch; }
+.db-site a { color: inherit; text-decoration: none; border: 0; }
+
+/* ───── Buttons ───── */
+.btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; font-family: var(--font-ui); font-weight:600; font-size:15px; letter-spacing:0.02em; border-radius: 999px; cursor:pointer; border: 0; transition: transform .15s ease, background .15s ease; text-decoration:none; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--db-ink); color: #fff; }
+.btn-pink { background: var(--db-pink); color: #fff; }
+.btn-ghost { background: transparent; color: var(--db-ink); border: 1.5px solid var(--db-ink); }
+.btn-ghost-white { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); }
+
+/* ───── Forms ───── */
+.field { display:flex; flex-direction:column; gap:6px; }
+.field label { font-family: var(--font-ui); font-weight:600; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color: var(--db-gray-500); }
+.field input, .field textarea { font-family: var(--font-body); font-size:16px; padding:12px 14px; border: 1.5px solid var(--db-gray-100); background: #fff; color: var(--db-ink); border-radius: 8px; outline: none; transition: border-color .15s ease; }
+.field input:focus, .field textarea:focus { border-color: var(--db-ink); }
+.field textarea { min-height: 120px; resize: vertical; }
+
+/* Dark variant of field */
+.field-dark input, .field-dark textarea { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.15); color: #fff; }
+.field-dark input:focus, .field-dark textarea:focus { border-color: var(--db-cyan); }
+.field-dark label { color: rgba(255,255,255,0.55); }
+
+/* ───── Service card ───── */
+.svc { display:flex; flex-direction:column; gap: 12px; }
+.svc .dot { width: 14px; height: 14px; border-radius: 50%; }
+.svc h3 { font-size: 22px; font-weight: 700; }
+.svc p { font-size: 15px; color: var(--db-gray-500); max-width: 38ch; }

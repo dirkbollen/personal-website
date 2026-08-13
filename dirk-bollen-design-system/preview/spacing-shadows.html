@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shadows & Elevation · Dirk Bollen Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: var(--s-7) var(--s-6); background: var(--db-gray-100); }
+  .preview-header { margin-bottom: var(--s-7); }
+  .section-label { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 700;
+    margin: 0 0 var(--s-5); padding-bottom: var(--s-2);
+    border-bottom: 2px solid var(--border); color: var(--fg); }
+
+  .shadow-grid { display: flex; gap: var(--s-6); flex-wrap: wrap; margin-bottom: var(--s-7); }
+  .shadow-card { background: #fff; padding: var(--s-5) var(--s-6); border-radius: var(--r-md); width: 200px; }
+  .shadow-card .token { font-family: var(--font-ui); font-size: var(--t-caption); font-weight: 700; color: var(--fg); margin: 0 0 var(--s-1); }
+  .shadow-card .value { font-family: var(--font-ui); font-size: var(--t-micro); color: var(--fg-muted); margin: 0 0 var(--s-2); }
+  .shadow-card .use   { font-family: var(--font-ui); font-size: var(--t-micro); color: var(--accent-alt); margin: 0; }
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <p class="eyebrow">Design System · Spacing</p>
+  <h1 style="font-size:var(--t-h2);margin:0 0 var(--s-3);">Shadows & Elevation</h1>
+  <p style="color:var(--fg-muted);font-size:var(--t-body-sm);max-width:56ch;">The system is vector-flat. Shadows are used only to lift interactive cards off a canvas background. Do not add shadows to diagram elements, section headers, or illustration shapes.</p>
+</div>
+
+<p class="section-label">Shadow Scale</p>
+<div class="shadow-grid">
+  <div class="shadow-card" style="box-shadow:none;border:1.5px solid var(--border);">
+    <p class="token">--sh-0</p>
+    <p class="value">none</p>
+    <p class="use">Flat elements, diagram shapes, inline components</p>
+  </div>
+  <div class="shadow-card" style="box-shadow:0 1px 2px rgba(0,0,0,0.06);">
+    <p class="token">--sh-1</p>
+    <p class="value">0 1px 2px rgba(0,0,0,0.06)</p>
+    <p class="use">Default resting card</p>
+  </div>
+  <div class="shadow-card" style="box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+    <p class="token">--sh-2</p>
+    <p class="value">0 2px 8px rgba(0,0,0,0.08)</p>
+    <p class="use">Hover state, elevated card</p>
+  </div>
+  <div class="shadow-card" style="box-shadow:0 8px 24px rgba(0,0,0,0.10);">
+    <p class="token">--sh-3</p>
+    <p class="value">0 8px 24px rgba(0,0,0,0.10)</p>
+    <p class="use">Modal, dropdown, focused panel</p>
+  </div>
+</div>
+
+<p class="section-label">Usage Rules</p>
+<div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--r-md);padding:var(--s-5) var(--s-6);">
+  <ul style="font-family:var(--font-body);font-size:var(--t-body-sm);color:var(--fg);padding-left:var(--s-5);margin:0;line-height:2;">
+    <li>Use <strong>--sh-0</strong> (no shadow) for diagram elements, section backgrounds, and hero blocks</li>
+    <li>Use <strong>--sh-1</strong> as the default resting state for all cards</li>
+    <li>Upgrade to <strong>--sh-2</strong> on hover (<code style="background:var(--bg-muted);padding:0 4px;border-radius:3px;">translateY(-2px) + --sh-2</code>)</li>
+    <li>Use <strong>--sh-3</strong> only for overlays: modals, popovers, dropdowns</li>
+    <li>Never stack shadows — choose one level and stay there</li>
+    <li>Never use coloured shadows — always neutral rgba black</li>
+  </ul>
+</div>
+</body>
+</html>

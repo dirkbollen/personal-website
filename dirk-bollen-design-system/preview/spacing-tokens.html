@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spacing Tokens · Dirk Bollen Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: var(--s-7) var(--s-6); background: var(--bg); }
+  .preview-header { margin-bottom: var(--s-7); }
+  .section-label { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 700;
+    margin: 0 0 var(--s-5); padding-bottom: var(--s-2);
+    border-bottom: 2px solid var(--border); color: var(--fg); }
+
+  .spacing-row { display: flex; align-items: center; gap: var(--s-5); margin-bottom: var(--s-4); }
+  .spacing-bar-wrap { display: flex; align-items: center; }
+  .spacing-bar { height: 24px; background: var(--db-cyan); border-radius: 2px; min-width: 4px; }
+  .spacing-info { display: flex; gap: var(--s-6); font-family: var(--font-ui); font-size: var(--t-caption); }
+  .spacing-info .token { font-weight: 700; color: var(--fg); min-width: 56px; }
+  .spacing-info .value { color: var(--db-pink); font-weight: 600; min-width: 48px; }
+  .spacing-info .note  { color: var(--fg-muted); }
+
+  .live-demo { background: var(--bg-muted); padding: var(--s-6); margin-top: var(--s-6); border: 1.5px solid var(--border); border-radius: var(--r-md); }
+  .spacing-demo-block { background: var(--db-cyan-soft); opacity: 0.6; border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <p class="eyebrow">Design System · Spacing</p>
+  <h1 style="font-size:var(--t-h2);margin:0 0 var(--s-3);">Spacing Scale</h1>
+  <p style="color:var(--fg-muted);font-size:var(--t-body-sm);max-width:56ch;">4px base, 10-step scale. Section gutters use --s-9 (96px). Component padding uses --s-4 to --s-6. Inline gaps use --s-2 to --s-3.</p>
+</div>
+
+<p class="section-label">Scale Reference</p>
+
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:4px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-1</span>
+    <span class="value">4px</span>
+    <span class="note">Inline micro gaps, icon padding</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:8px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-2</span>
+    <span class="value">8px</span>
+    <span class="note">Tight gaps, badge spacing</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:12px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-3</span>
+    <span class="value">12px</span>
+    <span class="note">List item gaps, card inner padding</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:16px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-4</span>
+    <span class="value">16px</span>
+    <span class="note">Default paragraph margin, compact card padding</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:24px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-5</span>
+    <span class="value">24px</span>
+    <span class="note">Card padding, blockquote indent</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:32px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-6</span>
+    <span class="value">32px</span>
+    <span class="note">Section sub-spacing, grid gap</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:48px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-7</span>
+    <span class="value">48px</span>
+    <span class="note">Page horizontal padding, preview padding</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:64px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-8</span>
+    <span class="value">64px</span>
+    <span class="note">Large component gaps, slide margins</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:96px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-9</span>
+    <span class="value">96px</span>
+    <span class="note">Section vertical rhythm (primary)</span>
+  </div>
+</div>
+<div class="spacing-row">
+  <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:128px;"></div></div>
+  <div class="spacing-info">
+    <span class="token">--s-10</span>
+    <span class="value">128px</span>
+    <span class="note">Hero vertical padding, wide sections</span>
+  </div>
+</div>
+
+<p class="section-label" style="margin-top:var(--s-7);">Visual Rhythm Demo</p>
+<div class="live-demo">
+  <p style="font-size:var(--t-caption);color:var(--fg-muted);margin:0 0 var(--s-5);">Section vertical gap (--s-9 = 96px) between components</p>
+  <div style="background:#211B43;color:#fff;padding:var(--s-5) var(--s-6);border-radius:var(--r-md);margin-bottom:var(--s-9);">
+    <p class="eyebrow" style="color:var(--db-cyan);margin-bottom:var(--s-2);">Hero Section</p>
+    <h2 style="color:#fff;margin-bottom:var(--s-3);font-size:var(--t-h3);">From strategy to delivery</h2>
+    <p style="color:rgba(255,255,255,0.7);font-size:var(--t-body-sm);max-width:100%;margin:0;">Digital & service design strategy</p>
+  </div>
+  <div style="background:#fff;border:1.5px solid var(--border);border-radius:var(--r-md);padding:var(--s-5) var(--s-6);">
+    <p class="eyebrow" style="margin-bottom:var(--s-2);">Services Section</p>
+    <h3 style="font-size:var(--t-h4);margin-bottom:var(--s-3);">What Dirk does</h3>
+    <div style="display:flex;gap:var(--s-4);flex-wrap:wrap;">
+      <span style="background:var(--bg-muted);padding:var(--s-2) var(--s-4);border-radius:var(--r-pill);font-size:var(--t-caption);font-family:var(--font-ui);">Digital Strategy</span>
+      <span style="background:var(--bg-muted);padding:var(--s-2) var(--s-4);border-radius:var(--r-pill);font-size:var(--t-caption);font-family:var(--font-ui);">Service Design</span>
+      <span style="background:var(--bg-muted);padding:var(--s-2) var(--s-4);border-radius:var(--r-pill);font-size:var(--t-caption);font-family:var(--font-ui);">AI &amp; Human Behaviour</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

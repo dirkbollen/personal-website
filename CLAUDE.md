@@ -1,27 +1,32 @@
 # CLAUDE.md - Personal website 
 
 ## Always do first 
-Check the Dirk Bollen brand guidelines and design system before making any design or visual decisions:
-- `dirkbollen-brand/BRAND.md` — brand guidelines
-- `dirkbollen-brand/SKILL.md` — brand skill instructions
-- `dirkbollen-brand/tokens.css` — design tokens (CSS)
-- `dirkbollen-brand/tokens.json` — design tokens (JSON)
+Check the Dirk Bollen design system before making any design or visual decisions. The **`dirk-bollen-design-system/`** folder is the authoritative source:
+- `dirk-bollen-design-system/DESIGN.md` — authoritative visual rules: color semantics, type scale, spacing, components, diagram vocabulary, voice, and anti-patterns
+- `dirk-bollen-design-system/SKILL.md` — design-system skill instructions
+- `dirk-bollen-design-system/colors_and_type.css` — design tokens + `@font-face` (CSS source of truth for `--db-*` tokens)
+- `dirk-bollen-design-system/preview/` — live-rendered component/token preview cards
+
+The older `dirkbollen-brand/` folder is superseded by `dirk-bollen-design-system/`; prefer the latter.
 
 ---
 
 ## Tech stack
-Plain vanilla HTML/CSS/JS. **No build system, no npm, no framework.** The entire site lives in a single file: `index.html`. Do not introduce React, Tailwind, or any bundler. External dependencies (fonts, icons) are loaded via CDN only.
+Plain vanilla HTML/CSS/JS. **No build system, no npm, no framework.** The entire site lives in a single file: `index.html`. Do not introduce React, Tailwind, or any bundler.
 
-Icons use [Lucide](https://lucide.dev) via CDN if needed.
+Fonts: **Montserrat** (headlines) is hosted **locally** as a variable font — `@font-face` in `index.html` points at `project/website/assets/fonts/` (copied from the design system's `fonts/`). **Poppins** (body) and **Inter** (UI) load from Google Fonts via CDN. Icons use [Lucide](https://lucide.dev) via CDN if needed.
 
 ## Design tokens
-The site redeclares brand tokens inline inside a `:root {}` block in `index.html` — it does **not** import `tokens.css` from the brand folder. When adding new sections or components, reference the CSS variables already defined in that `:root` block. Do not hard-code hex values.
+The site redeclares the design-system tokens inline inside a `:root {}` block in `index.html` — it does **not** `@import` `colors_and_type.css`. The `:root` block mirrors the design system: the full `--db-*` brand palette + neutral ramp, semantic aliases (`--fg`, `--bg`, `--accent`, `--border-strong`, …), and motion tokens, plus short aliases (`--pink`, `--ink`, …) that map onto the `--db-*` tokens. When adding new sections or components, reference these CSS variables — never hard-code hex values.
+
+Key rules from `DESIGN.md` to respect: white base background (**never** cream/beige — that's an anti-pattern), max 2 brand hues per surface, signature **3px** strong ink borders, flat-first radii, and restrained shadows.
 
 ## Asset structure
 ```
 project/website/assets/
   dirk-stage.jpg        — hero portrait photo
   logo-color.png        — colour logo used in nav
+  fonts/                — locally-hosted Montserrat variable fonts (upright + italic)
   events/               — speaking/event photos (5 images)
   news/                 — press/media images (Humo.jpg, hbvl2.png, swiss.jpg)
   other/                — miscellaneous assets

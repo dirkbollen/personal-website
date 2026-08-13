@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Assets · Dirk Bollen Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: var(--s-7) var(--s-6); background: var(--bg); }
+  .preview-header { margin-bottom: var(--s-7); }
+  .section-label { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 700;
+    margin: 0 0 var(--s-5); padding-bottom: var(--s-2);
+    border-bottom: 2px solid var(--border); color: var(--fg); }
+
+  .asset-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-5); margin-bottom: var(--s-7); }
+  .asset-card { border: 1.5px solid var(--border); border-radius: var(--r-md); overflow: hidden; }
+  .asset-preview { height: 140px; display: flex; align-items: center; justify-content: center; padding: var(--s-5); }
+  .asset-info { padding: var(--s-3) var(--s-4); border-top: 1px solid var(--border); background: var(--bg-muted); }
+  .asset-info .name { font-family: var(--font-display); font-size: var(--t-body-sm); font-weight: 700; margin: 0 0 2px; }
+  .asset-info .path { font-family: var(--font-ui); font-size: var(--t-micro); color: var(--fg-muted); margin: 0; word-break: break-all; }
+
+  .wordmark-row { display: flex; align-items: center; gap: var(--s-6); flex-wrap: wrap; margin-bottom: var(--s-7); padding: var(--s-6); background: var(--bg-muted); border-radius: var(--r-md); }
+  .wordmark-char { display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
+  .wordmark-char svg { display: block; }
+  .wordmark-char .label { font-family: var(--font-ui); font-size: var(--t-micro); color: var(--fg-muted); }
+
+  .usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); }
+  @media (max-width: 640px) { .usage-grid { grid-template-columns: 1fr; } }
+  .usage-surface { display: flex; align-items: center; justify-content: center; padding: var(--s-7); border-radius: var(--r-md); min-height: 120px; }
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <p class="eyebrow">Design System · Brand Assets</p>
+  <h1 style="font-size:var(--t-h2);margin:0 0 var(--s-3);">Brand Assets</h1>
+  <p style="color:var(--fg-muted);font-size:var(--t-body-sm);max-width:60ch;">Real preserved asset files from <code style="background:var(--bg-muted);padding:0 4px;border-radius:3px;">assets/</code>. Source: Figma /DesignSystem/Logo. The geometric <strong>B</strong> icon, wordmark characters, and three logo variants (color, line/dark, line/white).</p>
+</div>
+
+<p class="section-label">Logo Variants</p>
+<div class="asset-grid">
+  <div class="asset-card">
+    <div class="asset-preview" style="background:#fff;">
+      <img src="../assets/logo-color.png" alt="Dirk Bollen logo — color" style="max-height:80px;max-width:100%;object-fit:contain;">
+    </div>
+    <div class="asset-info">
+      <p class="name">Logo — Color</p>
+      <p class="path">assets/logo-color.png</p>
+    </div>
+  </div>
+  <div class="asset-card">
+    <div class="asset-preview" style="background:#fff;">
+      <img src="../assets/logo-line.png" alt="Dirk Bollen logo — line, dark" style="max-height:80px;max-width:100%;object-fit:contain;">
+    </div>
+    <div class="asset-info">
+      <p class="name">Logo — Line (Dark)</p>
+      <p class="path">assets/logo-line.png</p>
+    </div>
+  </div>
+  <div class="asset-card">
+    <div class="asset-preview" style="background:var(--db-ink);">
+      <img src="../assets/logo-line-white.png" alt="Dirk Bollen logo — line, white" style="max-height:80px;max-width:100%;object-fit:contain;">
+    </div>
+    <div class="asset-info">
+      <p class="name">Logo — Line (White, for dark bg)</p>
+      <p class="path">assets/logo-line-white.png</p>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">B Icon — Filled & Outline</p>
+<div class="asset-grid" style="grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));">
+  <div class="asset-card">
+    <div class="asset-preview" style="background:#fff;">
+      <img src="../assets/logo-icon-filled.svg" alt="B icon filled" style="height:80px;">
+    </div>
+    <div class="asset-info">
+      <p class="name">Icon — Filled</p>
+      <p class="path">assets/logo-icon-filled.svg</p>
+    </div>
+  </div>
+  <div class="asset-card">
+    <div class="asset-preview" style="background:#fff;">
+      <img src="../assets/logo-icon-outline.svg" alt="B icon outline" style="height:80px;">
+    </div>
+    <div class="asset-info">
+      <p class="name">Icon — Outline</p>
+      <p class="path">assets/logo-icon-outline.svg</p>
+    </div>
+  </div>
+  <div class="asset-card">
+    <div class="asset-preview" style="background:var(--db-ink);">
+      <img src="../assets/logo-icon-filled.svg" alt="B icon filled white" style="height:80px;filter:brightness(0) invert(1);">
+    </div>
+    <div class="asset-info">
+      <p class="name">Icon — White (dark bg)</p>
+      <p class="path">assets/logo-icon-filled.svg + filter</p>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Wordmark SVG Characters</p>
+<div class="wordmark-row">
+  <div class="wordmark-char">
+    <img src="../assets/logo-wordmark-Fill-1.svg" alt="D" style="height:40px;color:var(--db-ink);">
+    <span class="label">Fill-1 (D)<br>25×31px</span>
+  </div>
+  <div class="wordmark-char">
+    <img src="../assets/logo-wordmark-Fill-12.svg" alt="B" style="height:40px;">
+    <span class="label">Fill-12 (B)<br>22×31px</span>
+  </div>
+  <div class="wordmark-char">
+    <img src="../assets/logo-wordmark-Fill-14.svg" alt="o" style="height:40px;">
+    <span class="label">Fill-14 (o)<br>21×24px</span>
+  </div>
+  <div class="wordmark-char">
+    <img src="../assets/logo-wordmark-Fill-16.svg" alt="e" style="height:40px;">
+    <span class="label">Fill-16 (e)<br>20×24px</span>
+  </div>
+  <div style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg-muted);max-width:200px;">
+    Wordmark glyphs use <code style="background:var(--bg-muted);padding:0 4px;border-radius:3px;">fill: currentColor</code> — inherit ink color from parent.
+  </div>
+</div>
+
+<p class="section-label">Usage on Surfaces</p>
+<div class="usage-grid">
+  <div>
+    <p style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg-muted);margin:0 0 var(--s-2);">Light surface — use color or line/dark logo</p>
+    <div class="usage-surface" style="background:#fff;border:1.5px solid var(--border);">
+      <img src="../assets/logo-color.png" alt="logo on light" style="max-height:48px;max-width:200px;object-fit:contain;">
+    </div>
+  </div>
+  <div>
+    <p style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg-muted);margin:0 0 var(--s-2);">Dark surface — use line/white logo</p>
+    <div class="usage-surface" style="background:var(--db-ink);">
+      <img src="../assets/logo-line-white.png" alt="logo on dark" style="max-height:48px;max-width:200px;object-fit:contain;">
+    </div>
+  </div>
+  <div>
+    <p style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg-muted);margin:0 0 var(--s-2);">Cyan brand surface</p>
+    <div class="usage-surface" style="background:var(--db-cyan);">
+      <img src="../assets/logo-icon-filled.svg" alt="icon on cyan" style="height:48px;filter:brightness(0) invert(1);">
+    </div>
+  </div>
+  <div>
+    <p style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg-muted);margin:0 0 var(--s-2);">Pink signal surface</p>
+    <div class="usage-surface" style="background:var(--db-pink);">
+      <img src="../assets/logo-icon-filled.svg" alt="icon on pink" style="height:48px;filter:brightness(0) invert(1);">
+    </div>
+  </div>
+</div>
+</body>
+</html>

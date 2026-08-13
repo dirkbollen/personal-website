@@ -1,0 +1,368 @@
+/* ──────────────────────────────────────────────────────────
+   Dirk Bollen — Colors & Type
+   Personal brand system for Dirk Bollen, digital & service-design
+   strategist, PhD Human-Computer Interaction.
+   Source: /Users/dirkbollen/claudeai/claude/Dirk Bollen design system
+   ────────────────────────────────────────────────────────── */
+
+/* Fonts — Montserrat (headlines/emphasis) loaded locally from variable
+   TTF files preserved in fonts/. Poppins (body) + Inter (UI/data) from
+   Google Fonts. See fonts/README.md for substitution notes (Silka →
+   Poppins, Evonik Prokyon/Antares → Inter). */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/Montserrat-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ═══════════════════════════════════════════════════
+     BRAND PALETTE
+     Source: Figma /DesignSystem/Colors + example-visualisations.
+     The 4 signature hues form the geometric B logo and carry
+     semantic meaning in all diagrams and slides.
+     ═══════════════════════════════════════════════════ */
+
+  /* Signature brand hues */
+  --db-yellow:        #FDC40D;   /* rgb(253,196,13)  — spark / accent highlight */
+  --db-cyan:          #45C4D9;   /* rgb(69,196,217)  — "today" / present state */
+  --db-cyan-soft:     #6ECBD5;   /* rgb(110,203,213) — tinted backgrounds, fills */
+  --db-purple:        #7460AB;   /* rgb(116,96,171)  — AI / synthesis / depth */
+  --db-pink:          #EE4280;   /* rgb(238,66,128)  — future / signal / CTAs */
+
+  /* Dark inks */
+  --db-ink:           #211B43;   /* rgb(33,27,67)    — primary text, logo fill */
+  --db-ink-alt:       #2F2E41;   /* rgb(47,46,65)    — secondary ink */
+  --db-navy-deep:     #001D42;   /* rgb(0,29,66)     — data viz / dark blocks */
+
+  /* ═══════════════════════════════════════════════════
+     NEUTRALS
+     ═══════════════════════════════════════════════════ */
+  --db-white:         #FFFFFF;
+  --db-gray-50:       #F2F2F2;   /* subtle fills, input chrome */
+  --db-gray-100:      #E6E6E6;   /* dividers / soft borders */
+  --db-gray-200:      #DADADA;   /* canvas background */
+  --db-gray-300:      #B9B9B9;   /* disabled / secondary strokes */
+  --db-gray-500:      #747070;   /* muted text, dashed guide lines */
+  --db-gray-700:      #666666;   /* body-secondary */
+  --db-gray-900:      #333333;   /* dark secondary text */
+
+  /* ═══════════════════════════════════════════════════
+     SEMANTIC ALIASES
+     Use these in component code; use --db-* only in token definitions.
+     ═══════════════════════════════════════════════════ */
+  --fg:               var(--db-ink);
+  --fg-muted:         var(--db-gray-500);
+  --fg-inverse:       var(--db-white);
+  --bg:               var(--db-white);
+  --bg-muted:         var(--db-gray-50);
+  --bg-dark:          var(--db-ink);
+  --accent:           var(--db-pink);        /* signal / future / CTAs */
+  --accent-alt:       var(--db-cyan);        /* supportive / present */
+  --accent-warm:      var(--db-yellow);      /* highlight / spark */
+  --accent-deep:      var(--db-purple);      /* AI / synthesis */
+  --border:           var(--db-gray-100);
+  --border-strong:    var(--db-ink);
+  --dash:             var(--db-gray-500);    /* dashed guide lines */
+
+  /* ═══════════════════════════════════════════════════
+     TYPE FAMILIES
+     Display/headlines: Montserrat (assertive, geometric, Bold/ExtraBold)
+     Body/UI copy:      Poppins    (approachable, humanist geometric)
+     Data/micro:        Inter      (precise, dense UI + captions)
+     Quotes/editorial:  Georgia    (restraint serif for pull-quotes)
+     ═══════════════════════════════════════════════════ */
+  --font-display:     'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:        'Poppins',   'Helvetica Neue', Arial, sans-serif;
+  --font-ui:          'Inter',     'Helvetica Neue', Arial, sans-serif;
+  --font-serif:       Georgia, 'Times New Roman', serif;
+
+  /* ═══════════════════════════════════════════════════
+     TYPE SCALE (px)
+     Slide deck target is 1920×1080. Body copy in docs is 16–18px.
+     ═══════════════════════════════════════════════════ */
+  --t-display:   96px;     /* slide title hero */
+  --t-h1:        64px;     /* page/slide title */
+  --t-h2:        40px;     /* section header */
+  --t-h3:        32px;     /* sub-section */
+  --t-h4:        24px;     /* card title / lead label */
+  --t-body-lg:   20px;     /* lead paragraph */
+  --t-body:      18px;     /* default body */
+  --t-body-sm:   16px;     /* secondary body */
+  --t-caption:   14px;     /* captions, labels */
+  --t-micro:     12px;     /* metadata, tags, chips */
+
+  /* Line heights */
+  --lh-tight:    1.05;
+  --lh-snug:     1.2;
+  --lh-normal:   1.4;
+  --lh-relaxed:  1.55;
+
+  /* Tracking */
+  --tr-tight:    -0.02em;
+  --tr-normal:    0;
+  --tr-wide:      0.04em;
+  --tr-caps:      0.12em;
+
+  /* ═══════════════════════════════════════════════════
+     SPACING (4px base)
+     ═══════════════════════════════════════════════════ */
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:   12px;
+  --s-4:   16px;
+  --s-5:   24px;
+  --s-6:   32px;
+  --s-7:   48px;
+  --s-8:   64px;
+  --s-9:   96px;
+  --s-10:  128px;
+
+  /* ═══════════════════════════════════════════════════
+     RADII
+     System leans FLAT: 0 for blocks, 10px for soft cards,
+     pill (999px) for tags. Avoid mid-radii (6–8px).
+     ═══════════════════════════════════════════════════ */
+  --r-0:    0px;
+  --r-sm:   4px;
+  --r-md:   10px;
+  --r-lg:   20px;
+  --r-pill: 999px;
+  --r-full: 50%;
+
+  /* ═══════════════════════════════════════════════════
+     BORDERS
+     Strong sharp outlines are signature: 3px solid ink.
+     Dashed 3px mid-gray for guide lines / lines of visibility.
+     ═══════════════════════════════════════════════════ */
+  --bw-hair:   1px;
+  --bw-1:      2px;
+  --bw-2:      3px;  /* primary border weight */
+  --bw-3:      4px;
+  --bw-4:      5px;
+  --bs-solid:  solid;
+  --bs-dashed: dashed;
+
+  /* ═══════════════════════════════════════════════════
+     SHADOWS
+     Restrained — vector-flat brand. Shadows only to lift cards.
+     ═══════════════════════════════════════════════════ */
+  --sh-0: none;
+  --sh-1: 0 1px 2px rgba(0,0,0,0.06);
+  --sh-2: 0 2px 8px rgba(0,0,0,0.08);
+  --sh-3: 0 8px 24px rgba(0,0,0,0.10);
+
+  /* ═══════════════════════════════════════════════════
+     MOTION
+     ═══════════════════════════════════════════════════ */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:    120ms;
+  --dur-med:     220ms;
+  --dur-slow:    420ms;
+
+  /* ═══════════════════════════════════════════════════
+     LAYOUT
+     ═══════════════════════════════════════════════════ */
+  --content-w: 1200px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   BASE ELEMENT STYLES
+   ────────────────────────────────────────────────────────── */
+html, body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  color: var(--fg);
+  margin: 0;
+  letter-spacing: var(--tr-tight);
+  line-height: var(--lh-tight);
+}
+h1 { font-size: var(--t-h1);      font-weight: 800; }
+h2 { font-size: var(--t-h2);      font-weight: 700; }
+h3 { font-size: var(--t-h3);      font-weight: 700; }
+h4 { font-size: var(--t-h4);      font-weight: 600; letter-spacing: var(--tr-normal); }
+h5 { font-size: var(--t-body-lg); font-weight: 600; }
+
+/* Display hero (slide titles, landing hero) */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--t-display);
+  font-weight: 800;
+  letter-spacing: var(--tr-tight);
+  line-height: var(--lh-tight);
+}
+
+p {
+  margin: 0 0 var(--s-4) 0;
+  max-width: 68ch;
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+}
+
+/* Caption / small */
+small, .caption {
+  font-family: var(--font-ui);
+  font-size: var(--t-caption);
+  color: var(--fg-muted);
+  line-height: var(--lh-normal);
+}
+
+/* Metadata chips, tags */
+.micro {
+  font-family: var(--font-ui);
+  font-size: var(--t-micro);
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-weight: 600;
+}
+
+/* Section eyebrow — ALL CAPS, accent color, tracked */
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--t-caption);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Pull quote */
+blockquote {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--t-h3);
+  line-height: var(--lh-snug);
+  margin: var(--s-6) 0;
+  padding-left: var(--s-5);
+  border-left: var(--bw-2) solid var(--accent);
+  color: var(--fg);
+}
+
+code, kbd, pre {
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+  font-size: 0.92em;
+}
+
+/* Links: pink accent, underline on hover */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+a:hover { border-bottom-color: var(--accent); }
+
+/* ──────────────────────────────────────────────────────────
+   SHARED COMPONENTS (from website/site.css)
+   ────────────────────────────────────────────────────────── */
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  border: 0;
+  transition: transform var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+  text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary     { background: var(--db-ink);  color: #fff; }
+.btn-pink        { background: var(--db-pink); color: #fff; }
+.btn-cyan        { background: var(--db-cyan); color: var(--db-ink); }
+.btn-ghost       { background: transparent; color: var(--db-ink);
+                   border: 1.5px solid var(--db-ink); }
+.btn-ghost-white { background: transparent; color: #fff;
+                   border: 1.5px solid rgba(255,255,255,0.35); }
+
+/* Form fields */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--db-gray-500);
+}
+.field input,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: 16px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--db-gray-100);
+  background: #fff;
+  color: var(--db-ink);
+  border-radius: var(--r-sm);
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.field input:focus,
+.field textarea:focus { border-color: var(--db-ink); }
+.field textarea { min-height: 120px; resize: vertical; }
+
+/* Dark form variant */
+.field-dark input,
+.field-dark textarea {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.15);
+  color: #fff;
+}
+.field-dark input:focus,
+.field-dark textarea:focus { border-color: var(--db-cyan); }
+.field-dark label { color: rgba(255,255,255,0.55); }
+
+/* Service card */
+.svc { display: flex; flex-direction: column; gap: 12px; }
+.svc .dot { width: 14px; height: 14px; border-radius: 50%; }
+.svc h3 { font-size: 22px; font-weight: 700; }
+.svc p  { font-size: 15px; color: var(--db-gray-500); max-width: 38ch; }
+
+/* Focus ring — accessible, cyan tint */
+:focus-visible {
+  outline: 2px solid var(--db-cyan);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

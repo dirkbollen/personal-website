@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colors — Dark Theme · Dirk Bollen Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: var(--s-7) var(--s-6); background: var(--db-ink); color: var(--fg-inverse); }
+
+  h1, h2, h3, h4, h5 { color: var(--fg-inverse); }
+  .preview-header { margin-bottom: var(--s-7); }
+  .section-label { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 700;
+    margin: 0 0 var(--s-4); padding-bottom: var(--s-2);
+    border-bottom: 2px solid rgba(255,255,255,0.15); color: #fff; }
+
+  .swatch-row { display: flex; flex-direction: column; gap: var(--s-2); margin-bottom: var(--s-6); }
+  .swatch-row-item { display: flex; align-items: center; gap: var(--s-4); }
+  .color-chip { width: 48px; height: 48px; border-radius: var(--r-sm); flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.12); }
+  .chip-label .name  { font-family: var(--font-display); font-size: var(--t-body-sm); font-weight: 700;
+    margin: 0; color: #fff; }
+  .chip-label .token { font-family: var(--font-ui); font-size: var(--t-micro); letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5); margin: 2px 0 0; }
+
+  .demo-section {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.12);
+    padding: var(--s-6);
+    margin-top: var(--s-6);
+  }
+  .demo-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--r-md);
+    padding: var(--s-5);
+    max-width: 420px;
+  }
+  .demo-card .eyebrow { margin-bottom: var(--s-2); }
+  .demo-card h3 { font-size: var(--t-h4); color: #fff; margin-bottom: var(--s-3); }
+  .demo-card p { font-size: var(--t-body-sm); color: rgba(255,255,255,0.65); margin: 0 0 var(--s-4); max-width: 100%; }
+  .demo-actions { display: flex; gap: var(--s-3); flex-wrap: wrap; }
+
+  .dark-field { display: flex; flex-direction: column; gap: 6px; margin-top: var(--s-5); }
+  .dark-field label { font-family: var(--font-ui); font-weight: 600; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .dark-field input { font-family: var(--font-body); font-size: 16px; padding: 12px 14px;
+    border: 1.5px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04);
+    color: #fff; border-radius: var(--r-sm); outline: none;
+    transition: border-color var(--dur-fast) var(--ease-out); }
+  .dark-field input:focus { border-color: var(--db-cyan); }
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <p class="eyebrow">Design System · Colors</p>
+  <h1 style="font-size:var(--t-h2);margin:0 0 var(--s-3);color:#fff;">Dark Theme Surfaces</h1>
+  <p style="color:rgba(255,255,255,0.65);font-size:var(--t-body-sm);max-width:56ch;">Dark blocks use <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;font-size:0.9em;">--db-ink</code> (#211B43) as background. Hero sections, CTAs, footer bands, and slide dark frames all use this surface.</p>
+</div>
+
+<p class="section-label">Dark Surface Tokens</p>
+<div class="swatch-row">
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#211B43;"></div>
+    <div class="chip-label">
+      <p class="name">Background Dark</p>
+      <p class="token">--bg-dark → --db-ink · #211B43</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#001D42;"></div>
+    <div class="chip-label">
+      <p class="name">Navy Deep</p>
+      <p class="token">--db-navy-deep · #001D42 — data viz blocks</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#FFFFFF;"></div>
+    <div class="chip-label">
+      <p class="name">Foreground Inverse</p>
+      <p class="token">--fg-inverse → #FFFFFF — all body text on dark</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:rgba(255,255,255,0.55);"></div>
+    <div class="chip-label">
+      <p class="name">Muted on Dark</p>
+      <p class="token">rgba(255,255,255,0.55) — secondary text on dark</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:rgba(255,255,255,0.12);"></div>
+    <div class="chip-label">
+      <p class="name">Border on Dark</p>
+      <p class="token">rgba(255,255,255,0.12) — dividers on dark</p>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Accents on Dark</p>
+<div class="swatch-row">
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#EE4280;"></div>
+    <div class="chip-label">
+      <p class="name">Pink — CTA / Signal</p>
+      <p class="token">--accent · #EE4280 — primary action on dark</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#45C4D9;"></div>
+    <div class="chip-label">
+      <p class="name">Cyan — Focus / Present</p>
+      <p class="token">--accent-alt · #45C4D9 — focus ring and present-state on dark</p>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Live Component Demo — Dark Surface</p>
+<div class="demo-section">
+  <div class="demo-card">
+    <p class="eyebrow">Digital Strategy</p>
+    <h3>From strategy to roadmap</h3>
+    <p>Dirk helps leadership teams make the complex simple — translating insight into a concrete, feasible plan.</p>
+    <div class="demo-actions">
+      <button class="btn btn-pink">Start a conversation</button>
+      <button class="btn btn-ghost-white">View case studies</button>
+    </div>
+  </div>
+  <div class="dark-field" style="max-width:300px;">
+    <label>Your email</label>
+    <input type="email" placeholder="you@company.be">
+  </div>
+</div>
+</body>
+</html>

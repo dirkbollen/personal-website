@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colors — Primary Palette · Dirk Bollen Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: var(--s-7) var(--s-6); background: var(--bg); }
+  .preview-header { margin-bottom: var(--s-7); }
+  .preview-header .eyebrow { margin-bottom: var(--s-2); }
+  .preview-header h1 { font-size: var(--t-h2); margin-bottom: var(--s-3); }
+  .preview-header p { color: var(--fg-muted); font-size: var(--t-body-sm); max-width: 56ch; }
+
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--s-4); margin-bottom: var(--s-7); }
+  .swatch { border-radius: var(--r-md); overflow: hidden; box-shadow: var(--sh-2); }
+  .swatch-color { height: 96px; }
+  .swatch-info { padding: var(--s-3) var(--s-4); background: #fff; border-top: 1px solid var(--border); }
+  .swatch-name { font-family: var(--font-display); font-size: var(--t-body-sm); font-weight: 700; color: var(--fg); margin: 0 0 2px; }
+  .swatch-hex  { font-family: var(--font-ui); font-size: var(--t-micro); letter-spacing: 0.06em; color: var(--fg-muted); margin: 0 0 2px; }
+  .swatch-role { font-family: var(--font-ui); font-size: var(--t-micro); color: var(--fg-muted); margin: 0; }
+
+  .section-label { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 700; margin: 0 0 var(--s-4); padding-bottom: var(--s-2); border-bottom: 2px solid var(--border); color: var(--fg); }
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <p class="eyebrow">Design System · Colors</p>
+  <h1>Primary Brand Palette</h1>
+  <p>Four signature hues from the geometric B logo, plus dark inks. Each hue carries semantic meaning in diagrams: Pink = future/signal, Cyan = today/present, Purple = AI/synthesis, Yellow = spark/accent.</p>
+</div>
+
+<p class="section-label">Signature Hues</p>
+<div class="swatch-grid">
+  <div class="swatch">
+    <div class="swatch-color" style="background:#EE4280"></div>
+    <div class="swatch-info">
+      <p class="swatch-name">Pink</p>
+      <p class="swatch-hex">#EE4280 · --db-pink</p>
+      <p class="swatch-role">Future / signal / CTAs</p>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background:#45C4D9"></div>
+    <div class="swatch-info">
+      <p class="swatch-name">Cyan</p>
+      <p class="swatch-hex">#45C4D9 · --db-cyan</p>
+      <p class="swatch-role">"Today" / present state</p>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background:#7460AB"></div>
+    <div class="swatch-info">
+      <p class="swatch-name">Purple</p>
+      <p class="swatch-hex">#7460AB · --db-purple</p>
+      <p class="swatch-role">AI / synthesis / depth</p>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background:#FDC40D"></div>
+    <div class="swatch-info">
+      <p class="swatch-name">Yellow</p>
+      <p class="swatch-hex">#FDC40D · --db-yellow</p>
+      <p class="swatch-role">Spark / accent highlight</p>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background:#6ECBD5"></div>
+    <div class="swatch-info">
+      <p class="swatch-name">Cyan Soft</p>
+      <p class="swatch-hex">#6ECBD5 · --db-cyan-soft</p>
+      <p class="swatch-role">Tinted backgrounds, fills</p>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Dark Inks</p>
+<div class="swatch-grid">
+  <div class="swatch">
+    <div class="swatch-color" style="background:#211B43"></div>
+    <div class="swatch-info">
+      <p class="swatch-name">Ink</p>
+      <p class="swatch-hex">#211B43 · --db-ink</p>
+      <p class="swatch-role">Primary text, logo fill</p>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background:#2F2E41"></div>
+    <div class="swatch-info">
+      <p class="swatch-name">Ink Alt</p>
+      <p class="swatch-hex">#2F2E41 · --db-ink-alt</p>
+      <p class="swatch-role">Secondary ink</p>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background:#001D42"></div>
+    <div class="swatch-info">
+      <p class="swatch-name">Navy Deep</p>
+      <p class="swatch-hex">#001D42 · --db-navy-deep</p>
+      <p class="swatch-role">Data viz / dark blocks</p>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Colour Semantics in Diagrams</p>
+<div style="display:flex; gap:var(--s-4); flex-wrap:wrap; margin-top:var(--s-3);">
+  <div style="display:flex;align-items:center;gap:var(--s-2);">
+    <div style="width:16px;height:16px;border-radius:50%;background:#EE4280;"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg);">Future / Signal state</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:var(--s-2);">
+    <div style="width:16px;height:16px;border-radius:50%;background:#45C4D9;"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg);">Present / Today</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:var(--s-2);">
+    <div style="width:16px;height:16px;border-radius:50%;background:#7460AB;"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg);">AI / Synthesis</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:var(--s-2);">
+    <div style="width:16px;height:16px;border-radius:50%;background:#FDC40D;"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-caption);color:var(--fg);">Spark / Key moment</span>
+  </div>
+</div>
+</body>
+</html>

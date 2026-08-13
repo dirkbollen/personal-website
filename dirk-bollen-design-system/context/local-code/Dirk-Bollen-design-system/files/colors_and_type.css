@@ -1,0 +1,242 @@
+/* ──────────────────────────────────────────────────────────
+   Dirk Bollen — Colors & Type
+   Brand palette + typography tokens
+   ────────────────────────────────────────────────────────── */
+
+/* Fonts — Montserrat (headlines/emphasis), Poppins (body),
+   Inter (UI/data), plus system serif fallback for editorial notes.
+   Montserrat Italic is loaded locally from the uploaded brand file;
+   the other Montserrat weights + Poppins + Inter come from Google Fonts.
+   See /fonts/README.md for substitution notes. */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/Montserrat-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ───── Brand palette ─────
+     Lifted from /DesignSystem/Colors (6 swatches) and the
+     example-visualisations. The 4 signature hues form the logo;
+     the two dark values carry ALL body text. */
+  --db-yellow:        #FDC40D;   /* rgb(253,196,13)  — spark / accent */
+  --db-cyan:          #45C4D9;   /* rgb(69,196,217)  — "today" / present */
+  --db-cyan-soft:     #6ECBD5;   /* rgb(110,203,213) — tinted backgrounds */
+  --db-purple:        #7460AB;   /* rgb(116,96,171)  — synthesis / AI */
+  --db-pink:          #EE4280;   /* rgb(238,66,128)  — future / signal */
+  --db-ink:           #211B43;   /* rgb(33,27,67)    — primary text, logo */
+  --db-ink-alt:       #2F2E41;   /* rgb(47,46,65)    — secondary ink */
+  --db-navy-deep:     #001D42;   /* rgb(0,29,66)     — data viz / dark blocks */
+
+  /* ───── Neutrals ───── */
+  --db-white:         #FFFFFF;
+  --db-gray-50:       #F2F2F2;   /* subtle fills, input chrome */
+  --db-gray-100:      #E6E6E6;   /* dividers / soft borders */
+  --db-gray-200:      #DADADA;   /* canvas background */
+  --db-gray-300:      #B9B9B9;   /* disabled / secondary strokes */
+  --db-gray-500:      #747070;   /* muted text, dashed guide lines */
+  --db-gray-700:      #666666;   /* body-secondary */
+  --db-gray-900:      #333333;
+
+  /* ───── Semantic aliases ───── */
+  --fg:               var(--db-ink);
+  --fg-muted:         var(--db-gray-500);
+  --fg-inverse:       var(--db-white);
+  --bg:               var(--db-white);
+  --bg-muted:         var(--db-gray-50);
+  --bg-dark:          var(--db-ink);
+  --accent:           var(--db-pink);        /* signal / future / CTAs */
+  --accent-alt:       var(--db-cyan);        /* supportive / present */
+  --accent-warm:      var(--db-yellow);      /* highlight / spark */
+  --accent-deep:      var(--db-purple);      /* AI / synthesis */
+  --border:           var(--db-gray-100);
+  --border-strong:    var(--db-ink);
+  --dash:             var(--db-gray-500);    /* dashed guide lines */
+
+  /* ───── Type families ─────
+     Display/headlines: Montserrat (assertive, geometric, Bold/ExtraBold)
+     Body/UI copy:      Poppins    (approachable, humanist)
+     Data/micro:        Inter      (precise, for small UI + captions)    */
+  --font-display:     'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:        'Poppins',   'Helvetica Neue', Arial, sans-serif;
+  --font-ui:          'Inter',     'Helvetica Neue', Arial, sans-serif;
+  --font-serif:       Georgia, 'Times New Roman', serif;           /* quotes */
+
+  /* ───── Type scale (px)
+     Slide deck target is 1920×1080. Body copy in docs is 16–18px. */
+  --t-display:   96px;     /* slide title hero */
+  --t-h1:        64px;     /* slide title */
+  --t-h2:        40px;     /* section header */
+  --t-h3:        32px;     /* sub-section */
+  --t-h4:        24px;     /* card title / lead */
+  --t-body-lg:   20px;
+  --t-body:      18px;
+  --t-body-sm:   16px;
+  --t-caption:   14px;
+  --t-micro:     12px;
+
+  /* Line heights */
+  --lh-tight:   1.05;
+  --lh-snug:    1.2;
+  --lh-normal:  1.4;
+  --lh-relaxed: 1.55;
+
+  /* Tracking */
+  --tr-tight:   -0.02em;
+  --tr-normal:   0;
+  --tr-wide:     0.04em;
+  --tr-caps:     0.12em;
+
+  /* ───── Spacing (4px base) ───── */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+
+  /* ───── Radii ─────
+     Dirk's canvas leans FLAT: 0 for blocks, 10px for soft cards,
+     pill (999px) for tags. Avoid mid-radii. */
+  --r-0:   0px;
+  --r-sm:  4px;
+  --r-md:  10px;
+  --r-lg:  20px;
+  --r-pill: 999px;
+  --r-full: 50%;
+
+  /* ───── Borders ─────
+     Strong sharp outlines (2–5px) are signature: 3px solid ink
+     and 3px dashed mid-gray appear everywhere in the visualisations. */
+  --bw-hair:   1px;
+  --bw-1:      2px;
+  --bw-2:      3px;
+  --bw-3:      4px;
+  --bw-4:      5px;
+  --bs-solid:  solid;
+  --bs-dashed: dashed;
+
+  /* ───── Shadows ─────
+     Restrained. The brand is vector-flat; use shadows only to lift
+     cards off a canvas background. */
+  --sh-0: none;
+  --sh-1: 0 1px 2px rgba(0,0,0,0.06);
+  --sh-2: 0 2px 8px rgba(0,0,0,0.08);
+  --sh-3: 0 8px 24px rgba(0,0,0,0.10);
+
+  /* ───── Motion ───── */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:   120ms;
+  --dur-med:    220ms;
+  --dur-slow:   420ms;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Semantic element styles
+   ────────────────────────────────────────────────────────── */
+html, body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  color: var(--fg);
+  margin: 0;
+  letter-spacing: var(--tr-tight);
+  line-height: var(--lh-tight);
+}
+h1 { font-size: var(--t-h1);  font-weight: 800; }
+h2 { font-size: var(--t-h2);  font-weight: 700; }
+h3 { font-size: var(--t-h3);  font-weight: 700; }
+h4 { font-size: var(--t-h4);  font-weight: 600; letter-spacing: var(--tr-normal); }
+h5 { font-size: var(--t-body-lg); font-weight: 600; }
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--t-display);
+  font-weight: 800;
+  letter-spacing: var(--tr-tight);
+  line-height: var(--lh-tight);
+}
+
+p { margin: 0 0 var(--s-4) 0; max-width: 68ch; }
+
+.lead {
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+}
+
+small, .caption {
+  font-family: var(--font-ui);
+  font-size: var(--t-caption);
+  color: var(--fg-muted);
+  line-height: var(--lh-normal);
+}
+
+.micro {
+  font-family: var(--font-ui);
+  font-size: var(--t-micro);
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--t-caption);
+  font-weight: 600;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+blockquote {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--t-h3);
+  line-height: var(--lh-snug);
+  margin: var(--s-6) 0;
+  padding-left: var(--s-5);
+  border-left: var(--bw-3) solid var(--accent);
+  color: var(--fg);
+}
+
+code, kbd, pre {
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+  font-size: 0.92em;
+}
+
+/* Links pick up the pink "future/signal" accent.
+   Underline on hover; no hover darken (keeps the flat, editorial feel). */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+a:hover { border-bottom-color: var(--accent); }

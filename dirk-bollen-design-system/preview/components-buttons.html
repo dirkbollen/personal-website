@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components — Buttons · Dirk Bollen Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: var(--s-7) var(--s-6); background: var(--bg); }
+  .preview-header { margin-bottom: var(--s-7); }
+  .section-label { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 700;
+    margin: 0 0 var(--s-5); padding-bottom: var(--s-2);
+    border-bottom: 2px solid var(--border); color: var(--fg); }
+
+  .row { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; margin-bottom: var(--s-5); }
+  .dark-surface { background: var(--db-ink); padding: var(--s-6); border-radius: var(--r-md); margin-bottom: var(--s-5); }
+  .dark-surface .row { margin-bottom: 0; }
+
+  .spec-table { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: var(--t-caption); margin-top: var(--s-6); }
+  .spec-table th { text-align: left; padding: var(--s-2) var(--s-4); background: var(--bg-muted); font-weight: 700; border-bottom: 2px solid var(--border); }
+  .spec-table td { padding: var(--s-2) var(--s-4); border-bottom: 1px solid var(--border); vertical-align: top; }
+  .spec-table td code { background: var(--bg-muted); padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <p class="eyebrow">Design System · Components</p>
+  <h1 style="font-size:var(--t-h2);margin:0 0 var(--s-3);">Buttons</h1>
+  <p style="color:var(--fg-muted);font-size:var(--t-body-sm);max-width:56ch;">All buttons use Inter (--font-ui) at 15px weight 600. Pill radius (999px). Hover lifts translateY(-1px). No box-shadow on resting state.</p>
+</div>
+
+<p class="section-label">Button Variants — Light Surface</p>
+<div class="row">
+  <button class="btn btn-primary">Primary / Ink</button>
+  <button class="btn btn-pink">Pink / Signal</button>
+  <button class="btn btn-cyan">Cyan / Present</button>
+  <button class="btn btn-ghost">Ghost / Outline</button>
+</div>
+
+<p class="section-label">Button Variants — Dark Surface</p>
+<div class="dark-surface">
+  <div class="row">
+    <button class="btn btn-pink">Start a conversation</button>
+    <button class="btn btn-ghost-white">View case studies</button>
+    <button class="btn btn-cyan">Explore work</button>
+  </div>
+</div>
+
+<p class="section-label">Button with Icon</p>
+<div class="row">
+  <button class="btn btn-primary">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    See the work
+  </button>
+  <button class="btn btn-pink">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    Book a session
+  </button>
+  <button class="btn btn-ghost">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M13 3L3 13M3 3h10v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Download CV
+  </button>
+</div>
+
+<p class="section-label">Disabled State</p>
+<div class="row">
+  <button class="btn btn-primary" disabled style="opacity:0.38;cursor:not-allowed;pointer-events:none;">Primary disabled</button>
+  <button class="btn btn-pink" disabled style="opacity:0.38;cursor:not-allowed;pointer-events:none;">Pink disabled</button>
+  <button class="btn btn-ghost" disabled style="opacity:0.38;cursor:not-allowed;pointer-events:none;">Ghost disabled</button>
+</div>
+
+<p class="section-label">Specification</p>
+<table class="spec-table">
+  <thead>
+    <tr>
+      <th>Variant</th>
+      <th>Background</th>
+      <th>Text color</th>
+      <th>Border</th>
+      <th>Use case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.btn-primary</code></td>
+      <td>--db-ink (#211B43)</td>
+      <td>#fff</td>
+      <td>none</td>
+      <td>Primary actions on white surfaces</td>
+    </tr>
+    <tr>
+      <td><code>.btn-pink</code></td>
+      <td>--db-pink (#EE4280)</td>
+      <td>#fff</td>
+      <td>none</td>
+      <td>Signal / CTA (future state, contact, booking)</td>
+    </tr>
+    <tr>
+      <td><code>.btn-cyan</code></td>
+      <td>--db-cyan (#45C4D9)</td>
+      <td>--db-ink</td>
+      <td>none</td>
+      <td>Present/today actions, secondary on dark</td>
+    </tr>
+    <tr>
+      <td><code>.btn-ghost</code></td>
+      <td>transparent</td>
+      <td>--db-ink</td>
+      <td>1.5px solid --db-ink</td>
+      <td>Secondary action on light surfaces</td>
+    </tr>
+    <tr>
+      <td><code>.btn-ghost-white</code></td>
+      <td>transparent</td>
+      <td>#fff</td>
+      <td>1.5px solid rgba(255,255,255,0.35)</td>
+      <td>Secondary action on dark surfaces</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

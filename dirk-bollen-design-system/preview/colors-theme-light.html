@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colors — Light Theme · Dirk Bollen Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: var(--s-7) var(--s-6); background: var(--bg); }
+  .preview-header { margin-bottom: var(--s-7); }
+  .section-label { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 700;
+    margin: 0 0 var(--s-4); padding-bottom: var(--s-2); border-bottom: 2px solid var(--border); color: var(--fg); }
+
+  .swatch-row { display: flex; flex-direction: column; gap: var(--s-2); margin-bottom: var(--s-6); }
+  .swatch-row-item { display: flex; align-items: center; gap: var(--s-4); }
+  .color-chip { width: 48px; height: 48px; border-radius: var(--r-sm); flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.08); }
+  .chip-label { flex: 1; }
+  .chip-label .name  { font-family: var(--font-display); font-size: var(--t-body-sm); font-weight: 700; margin: 0; }
+  .chip-label .token { font-family: var(--font-ui); font-size: var(--t-micro); letter-spacing: 0.06em;
+    color: var(--fg-muted); margin: 2px 0 0; }
+
+  .demo-section {
+    background: var(--bg);
+    border: 2px solid var(--border-strong);
+    padding: var(--s-6);
+    margin-top: var(--s-6);
+  }
+  .demo-card {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: var(--s-5);
+    max-width: 420px;
+    box-shadow: var(--sh-2);
+  }
+  .demo-card .eyebrow { margin-bottom: var(--s-2); }
+  .demo-card h3 { font-size: var(--t-h4); margin-bottom: var(--s-3); }
+  .demo-card p { font-size: var(--t-body-sm); color: var(--fg-muted); margin: 0 0 var(--s-4); }
+  .demo-actions { display: flex; gap: var(--s-3); flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <p class="eyebrow">Design System · Colors</p>
+  <h1 style="font-size:var(--t-h2);margin:0 0 var(--s-3);">Light Theme Tokens</h1>
+  <p style="color:var(--fg-muted);font-size:var(--t-body-sm);max-width:56ch;">Semantic aliases that drive component styling on white backgrounds. Use --fg, --bg, --accent etc. in components — never raw hex values.</p>
+</div>
+
+<p class="section-label">Semantic Surface Tokens</p>
+<div class="swatch-row">
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#FFFFFF;"></div>
+    <div class="chip-label">
+      <p class="name">Background</p>
+      <p class="token">--bg → #FFFFFF</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#F2F2F2;"></div>
+    <div class="chip-label">
+      <p class="name">Background Muted</p>
+      <p class="token">--bg-muted → #F2F2F2</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#211B43;"></div>
+    <div class="chip-label">
+      <p class="name">Foreground</p>
+      <p class="token">--fg → #211B43</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#747070;"></div>
+    <div class="chip-label">
+      <p class="name">Foreground Muted</p>
+      <p class="token">--fg-muted → #747070</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#E6E6E6;"></div>
+    <div class="chip-label">
+      <p class="name">Border</p>
+      <p class="token">--border → #E6E6E6</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#211B43;"></div>
+    <div class="chip-label">
+      <p class="name">Border Strong</p>
+      <p class="token">--border-strong → #211B43</p>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Semantic Accent Tokens</p>
+<div class="swatch-row">
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#EE4280;"></div>
+    <div class="chip-label">
+      <p class="name">Accent (primary CTA)</p>
+      <p class="token">--accent → --db-pink · #EE4280</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#45C4D9;"></div>
+    <div class="chip-label">
+      <p class="name">Accent Alt (present/today)</p>
+      <p class="token">--accent-alt → --db-cyan · #45C4D9</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#FDC40D;"></div>
+    <div class="chip-label">
+      <p class="name">Accent Warm (spark)</p>
+      <p class="token">--accent-warm → --db-yellow · #FDC40D</p>
+    </div>
+  </div>
+  <div class="swatch-row-item">
+    <div class="color-chip" style="background:#7460AB;"></div>
+    <div class="chip-label">
+      <p class="name">Accent Deep (AI/synthesis)</p>
+      <p class="token">--accent-deep → --db-purple · #7460AB</p>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Live Component Demo — Light Surface</p>
+<div class="demo-section">
+  <div class="demo-card">
+    <p class="eyebrow">Service Design</p>
+    <h3>Strategic Clarity Workshop</h3>
+    <p>From high-level insight to a feasible roadmap. Facilitated with Proximus and KBC teams.</p>
+    <div class="demo-actions">
+      <button class="btn btn-pink">Book a session</button>
+      <button class="btn btn-ghost">Learn more</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

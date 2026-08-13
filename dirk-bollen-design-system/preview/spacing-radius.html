@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radius & Borders · Dirk Bollen Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: var(--s-7) var(--s-6); background: var(--bg); }
+  .preview-header { margin-bottom: var(--s-7); }
+  .section-label { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 700;
+    margin: 0 0 var(--s-5); padding-bottom: var(--s-2);
+    border-bottom: 2px solid var(--border); color: var(--fg); }
+
+  .radius-grid { display: flex; gap: var(--s-5); flex-wrap: wrap; margin-bottom: var(--s-7); }
+  .radius-item { display: flex; flex-direction: column; align-items: center; gap: var(--s-3); }
+  .radius-box { width: 96px; height: 96px; background: var(--db-navy-deep); }
+  .radius-info { text-align: center; }
+  .radius-info .token { font-family: var(--font-ui); font-size: var(--t-caption); font-weight: 700; color: var(--fg); display: block; }
+  .radius-info .value { font-family: var(--font-ui); font-size: var(--t-micro); color: var(--db-pink); display: block; margin-top: 2px; }
+  .radius-info .note  { font-family: var(--font-ui); font-size: var(--t-micro); color: var(--fg-muted); display: block; margin-top: 2px; }
+
+  .border-grid { display: flex; flex-direction: column; gap: var(--s-4); margin-bottom: var(--s-7); }
+  .border-item { display: flex; align-items: center; gap: var(--s-5); }
+  .border-demo { width: 120px; height: 40px; }
+  .border-info { font-family: var(--font-ui); font-size: var(--t-caption); }
+  .border-info .token { font-weight: 700; color: var(--fg); }
+  .border-info .value { color: var(--fg-muted); margin-left: var(--s-2); }
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <p class="eyebrow">Design System · Spacing</p>
+  <h1 style="font-size:var(--t-h2);margin:0 0 var(--s-3);">Radius & Borders</h1>
+  <p style="color:var(--fg-muted);font-size:var(--t-body-sm);max-width:56ch;">The system leans <strong style="color:var(--fg);">flat</strong>. Use 0 for diagram blocks, 4px for subtle lifts, 10px for cards, 999px (pill) for tags and buttons. Avoid mid-radii (6–8px).</p>
+</div>
+
+<p class="section-label">Border Radius Scale</p>
+<div class="radius-grid">
+  <div class="radius-item">
+    <div class="radius-box" style="border-radius:0;"></div>
+    <div class="radius-info">
+      <span class="token">--r-0</span>
+      <span class="value">0px</span>
+      <span class="note">Blocks, diagram shapes, hero panels</span>
+    </div>
+  </div>
+  <div class="radius-item">
+    <div class="radius-box" style="border-radius:4px;"></div>
+    <div class="radius-info">
+      <span class="token">--r-sm</span>
+      <span class="value">4px</span>
+      <span class="note">Inputs, subtle card lift</span>
+    </div>
+  </div>
+  <div class="radius-item">
+    <div class="radius-box" style="border-radius:10px;"></div>
+    <div class="radius-info">
+      <span class="token">--r-md</span>
+      <span class="value">10px</span>
+      <span class="note">Soft cards, modals</span>
+    </div>
+  </div>
+  <div class="radius-item">
+    <div class="radius-box" style="border-radius:20px;"></div>
+    <div class="radius-info">
+      <span class="token">--r-lg</span>
+      <span class="value">20px</span>
+      <span class="note">Feature panels</span>
+    </div>
+  </div>
+  <div class="radius-item">
+    <div class="radius-box" style="border-radius:999px;"></div>
+    <div class="radius-info">
+      <span class="token">--r-pill</span>
+      <span class="value">999px</span>
+      <span class="note">Tags, chips, CTAs, buttons</span>
+    </div>
+  </div>
+  <div class="radius-item">
+    <div class="radius-box" style="border-radius:50%;"></div>
+    <div class="radius-info">
+      <span class="token">--r-full</span>
+      <span class="value">50%</span>
+      <span class="note">Avatars, dot indicators</span>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Border Widths</p>
+<div class="border-grid">
+  <div class="border-item">
+    <div class="border-demo" style="border: 1px solid var(--db-ink);"></div>
+    <div class="border-info">
+      <span class="token">--bw-hair</span>
+      <span class="value">1px solid — dividers, table rules</span>
+    </div>
+  </div>
+  <div class="border-item">
+    <div class="border-demo" style="border: 2px solid var(--db-ink);"></div>
+    <div class="border-info">
+      <span class="token">--bw-1</span>
+      <span class="value">2px solid — secondary outlines</span>
+    </div>
+  </div>
+  <div class="border-item">
+    <div class="border-demo" style="border: 3px solid var(--db-ink);"></div>
+    <div class="border-info">
+      <span class="token">--bw-2</span>
+      <span class="value">3px solid — <strong>primary border weight</strong> (diagram shapes, cards)</span>
+    </div>
+  </div>
+  <div class="border-item">
+    <div class="border-demo" style="border: 3px dashed var(--db-gray-500);"></div>
+    <div class="border-info">
+      <span class="token">--bw-2 --bs-dashed</span>
+      <span class="value">3px dashed --dash — lines of visibility, uncertainty zones</span>
+    </div>
+  </div>
+  <div class="border-item">
+    <div class="border-demo" style="border: 5px solid var(--db-pink);"></div>
+    <div class="border-info">
+      <span class="token">--bw-4</span>
+      <span class="value">5px solid — emphasis accent borders</span>
+    </div>
+  </div>
+</div>
+
+<p class="section-label">Diagram Border Vocabulary</p>
+<div style="display:flex;gap:var(--s-6);flex-wrap:wrap;margin-top:var(--s-3);">
+  <div style="text-align:center;">
+    <div style="width:120px;height:60px;border-radius:50%;border:3px solid var(--db-ink);margin:0 auto var(--s-2);"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-micro);color:var(--fg-muted);">Ellipse — Person/State<br>3px solid ink</span>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:100px;height:60px;border-radius:8px;border:3px solid var(--db-ink);margin:0 auto var(--s-2);"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-micro);color:var(--fg-muted);">Rounded rect — System<br>3px solid ink</span>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:120px;height:60px;border-radius:50%;border:3px dashed var(--db-gray-500);margin:0 auto var(--s-2);"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-micro);color:var(--fg-muted);">Dashed ellipse — Aspirational<br>3px dashed gray-500</span>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:100px;height:60px;border-radius:8px;border:3px solid var(--db-pink);background:rgba(238,66,128,0.08);margin:0 auto var(--s-2);"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-micro);color:var(--fg-muted);">Future state fill<br>pink fill + pink border</span>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:100px;height:60px;border-radius:8px;border:3px solid var(--db-cyan);background:rgba(69,196,217,0.1);margin:0 auto var(--s-2);"></div>
+    <span style="font-family:var(--font-ui);font-size:var(--t-micro);color:var(--fg-muted);">Present state fill<br>cyan fill + cyan border</span>
+  </div>
+</div>
+</body>
+</html>
